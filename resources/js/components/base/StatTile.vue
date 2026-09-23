@@ -43,8 +43,10 @@ defineProps({
 /* A row of tiles should read as one group, so the value stays neutral and only
    the left rail differentiates. Colour appears when the tile reports a state
    the user has to act on - over budget, a limit reached - not as decoration. */
-.tile--gold { border-left-color: var(--accent-line); }
-.tile--brand { border-left-color: var(--border-strong); }
+.tile--gold { border-left-color: var(--accent); }
+.tile--gold .tile__value { color: var(--accent); }
+.tile--brand { border-left-color: var(--accent-cool); }
+.tile--brand .tile__value { color: var(--accent-cool); }
 .tile--success { border-left-color: var(--success); }
 .tile--warning { border-left-color: var(--warning); }
 .tile--warning .tile__value { color: var(--warning); }

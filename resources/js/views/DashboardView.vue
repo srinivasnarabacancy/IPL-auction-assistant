@@ -9,7 +9,10 @@ import StatTile from '@/components/base/StatTile.vue'
 import BaseCard from '@/components/base/BaseCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseBadge from '@/components/base/BaseBadge.vue'
-import PlayerGrid from '@/components/player/PlayerGrid.vue'
+import PlayerCard from '@/components/player/PlayerCard.vue'
+import CarouselRow from '@/components/base/CarouselRow.vue'
+import NavIcon from '@/components/base/NavIcon.vue'
+import BaseSpinner from '@/components/base/BaseSpinner.vue'
 import BudgetMeter from '@/components/squad/BudgetMeter.vue'
 import RoleDistribution from '@/components/squad/RoleDistribution.vue'
 import SquadList from '@/components/squad/SquadList.vue'
@@ -23,9 +26,9 @@ const marquee = useAsync((params) => players.list(params))
 const bargains = useAsync((params) => players.list(params))
 
 onMounted(() => {
-  marquee.run({ sortBy: 'rating', pageSize: 4 })
+  marquee.run({ sortBy: 'rating', pageSize: 12 })
   // Best rating available near the bottom of the price ladder.
-  bargains.run({ sortBy: 'rating', maxPrice: 1, pageSize: 4 })
+  bargains.run({ sortBy: 'rating', maxPrice: 1, pageSize: 12 })
 })
 
 const summary = computed(() => squad.summary)
@@ -39,11 +42,11 @@ const errorCount = computed(() => summary.value?.violations.filter((v) => v.seve
 const warningCount = computed(() => summary.value?.violations.filter((v) => v.severity !== 'error').length ?? 0)
 
 const quickLinks = [
-  { to: '/players', title: 'Player Explorer', text: 'Filter the pool by role, origin, position and price.', icon: '⌕' },
-  { to: '/compare', title: 'Compare Players', text: 'Put up to four players side by side.', icon: '⇄' },
-  { to: '/squad', title: 'Squad Builder', text: 'Model your XI and track the purse.', icon: '▦' },
-  { to: '/auction', title: 'Auction Room', text: 'Simulate live bidding against rivals.', icon: '⚡' },
-  { to: '/assistant', title: 'AI Assistant', text: 'Ask questions grounded in your squad.', icon: '✦' },
+  { to: '/players', title: 'Player Explorer', text: 'Filter the pool by role, origin, position and price.', icon: 'explore' },
+  { to: '/compare', title: 'Compare Players', text: 'Put up to four players side by side.', icon: 'compare' },
+  { to: '/squad', title: 'Squad Builder', text: 'Model your XI and track the purse.', icon: 'squad' },
+  { to: '/auction', title: 'Auction Room', text: 'Simulate live bidding against rivals.', icon: 'auction' },
+  { to: '/assistant', title: 'AI Assistant', text: 'Ask questions grounded in your squad.', icon: 'assistant' },
 ]
 </script>
 
@@ -69,13 +72,13 @@ const quickLinks = [
         label="Remaining purse"
         :value="remaining"
         money
-        :tone="remaining < 0 ? 'danger' : 'neutral'"
+        :tone="remaining < 0 ? 'danger' : 'gold'"
         :hint="`of ${crore(squad.budget)} total`"
       />
       <StatTile
         label="Squad size"
         :value="summary?.squadSize ?? squad.size"
-        tone="neutral"
+        tone="brand"
         :hint="summary ? `${summary.slotsToMinimum} to minimum of ${summary.limits.minSquadSize}` : 'No players yet'"
       />
       <StatTile
@@ -87,7 +90,7 @@ const quickLinks = [
       <StatTile
         label="Squad checks"
         :value="errorCount ? `${errorCount} blocking` : warningCount ? `${warningCount} to review` : 'All clear'"
-        :tone="errorCount ? 'danger' : 'neutral'"
+        :tone="errorCount ? 'danger' : warningCount ? 'warning' : 'success'"
         :hint="summary ? `${summary.violations.length} total notes` : 'Add players to start'"
       />
     </section>
@@ -99,25 +102,44 @@ const quickLinks = [
             <RouterLink to="/players"><BaseButton variant="ghost" size="sm">View all →</BaseButton></RouterLink>
           </template>
           <div class="cardpad">
-            <PlayerGrid :players="marquee.data.value?.items || []" :loading="marquee.loading.value" />
+            <BaseSpinner v-if="marquee.loading.value" label="Loading players…" />
+            <CarouselRow v-else label="Marquee players">
+              <PlayerCard
+                v-for="player in marquee.data.value?.items || []"
+                :key="player.id"
+                :player="player"
+                :in-squad="squad.has(player.id)"
+                :in-compare="compare.has(player.id)"
+                :compare-disabled="compare.isFull"
+                @toggle-squad="squad.toggle($event)"
+                @toggle-compare="compare.toggle($event.id)"
+              />
+            </CarouselRow>
           </div>
         </BaseCard>
 
         <BaseCard title="Value picks" subtitle="Best ratings at ₹1 Cr base or below" :padded="false">
           <div class="cardpad">
-            <PlayerGrid
-              :players="bargains.data.value?.items || []"
-              :loading="bargains.loading.value"
-              empty-title="No value picks found"
-              empty-message="Every player in the pool is priced above ₹1 Cr."
-            />
+            <BaseSpinner v-if="bargains.loading.value" label="Loading players…" />
+            <CarouselRow v-else label="Value picks">
+              <PlayerCard
+                v-for="player in bargains.data.value?.items || []"
+                :key="player.id"
+                :player="player"
+                :in-squad="squad.has(player.id)"
+                :in-compare="compare.has(player.id)"
+                :compare-disabled="compare.isFull"
+                @toggle-squad="squad.toggle($event)"
+                @toggle-compare="compare.toggle($event.id)"
+              />
+            </CarouselRow>
           </div>
         </BaseCard>
 
         <BaseCard title="Jump to" :padded="false">
           <div class="links">
             <RouterLink v-for="link in quickLinks" :key="link.to" :to="link.to" class="link">
-              <span class="link__icon">{{ link.icon }}</span>
+              <span class="link__icon"><NavIcon :name="link.icon" :size="17" /></span>
               <span class="link__body">
                 <strong>{{ link.title }}</strong>
                 <small>{{ link.text }}</small>
