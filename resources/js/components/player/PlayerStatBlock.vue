@@ -69,8 +69,9 @@ const bowlingRows = computed(() => {
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
-.statblock__item--key { border-color: rgba(240, 165, 0, 0.3); background: var(--accent-soft); }
-.statblock__item--key dd { color: var(--accent); }
+/* The role-critical number is emphasised by contrast, not by hue. */
+.statblock__item--key { border-color: var(--border-strong); background: var(--surface-hover); }
+.statblock__item--key dd { color: var(--text); }
 .statblock__item dt { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 600; }
 .statblock__item dd { margin: 0; font-size: 17px; font-weight: 700; }
 </style>

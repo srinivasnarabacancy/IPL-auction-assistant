@@ -105,6 +105,6 @@ const overseasSelected = computed(() => selected.value.filter((p) => p.nationali
 }
 .mini--warn { border-color: rgba(255, 181, 71, 0.35); }
 .mini__label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600; }
-.mini__value { font-size: 22px; font-weight: 800; }
+.mini__value { font-size: 22px; font-weight: 700; }
 .mini--warn .mini__value { color: var(--warning); }
 </style>

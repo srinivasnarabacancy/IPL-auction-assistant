@@ -33,8 +33,14 @@ const llmLabel = computed(() =>
         </p>
       </div>
       <div class="row-wrap">
-        <BaseBadge :tone="chat.meta?.llmConfigured ? 'success' : 'warning'">{{ llmLabel }}</BaseBadge>
-        <BaseBadge v-if="chat.meta" tone="neutral">{{ chat.meta.indexedDocuments }} docs indexed</BaseBadge>
+        <!--
+          The model name and index size are diagnostics. The one thing a user
+          should know is that answers are coming from the fallback answerer
+          rather than the model, because that visibly changes their quality.
+        -->
+        <BaseBadge v-if="chat.meta && !chat.meta.llmConfigured" tone="warning">
+          Retrieval-only mode
+        </BaseBadge>
         <BaseButton v-if="!chat.isEmpty" variant="ghost" size="sm" @click="chat.clear()">New chat</BaseButton>
       </div>
     </header>
@@ -43,7 +49,7 @@ const llmLabel = computed(() =>
       <div class="assistant__chat">
         <ChatWindow :messages="chat.messages">
           <template #intro>
-            <BaseCard v-if="chat.isEmpty" title="Ask about the auction" accent="gold">
+            <BaseCard v-if="chat.isEmpty" title="Ask about the auction">
               <p class="intro">
                 I can find players that fit a need and a budget, compare them, explain the auction
                 and squad rules, and work out what your remaining purse of
@@ -68,7 +74,7 @@ const llmLabel = computed(() =>
       </div>
 
       <aside class="assistant__side">
-        <BaseCard title="Context sent with every question" accent="brand">
+        <BaseCard title="Context sent with every question">
           <dl class="ctx">
             <div><dt>Purse remaining</dt><dd class="num"><MoneyValue :value="remaining" /></dd></div>
             <div><dt>Total purse</dt><dd class="num"><MoneyValue :value="squad.budget" /></dd></div>

@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  tone: { type: String, default: 'neutral' }, // neutral | gold | brand | magenta | success | warning | danger
+  tone: { type: String, default: 'neutral' }, // neutral | accent | success | warning | danger
   size: { type: String, default: 'md' },
 })
 </script>
@@ -24,9 +24,7 @@ defineProps({
 .badge--md { padding: 5px 10px; font-size: 11px; }
 
 .badge--neutral { background: var(--surface-hover); color: var(--text-muted); border-color: var(--border); }
-.badge--gold { background: var(--accent-soft); color: var(--accent); border-color: rgba(240, 165, 0, 0.3); }
-.badge--brand { background: var(--brand-soft); color: #8fa2ff; border-color: rgba(61, 90, 254, 0.35); }
-.badge--magenta { background: var(--magenta-soft); color: #ff7ab8; border-color: rgba(216, 27, 122, 0.35); }
+.badge--accent { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-line); }
 .badge--success { background: var(--success-soft); color: var(--success); border-color: rgba(47, 209, 140, 0.3); }
 .badge--warning { background: var(--warning-soft); color: var(--warning); border-color: rgba(255, 181, 71, 0.3); }
 .badge--danger { background: var(--danger-soft); color: var(--danger); border-color: rgba(255, 92, 114, 0.3); }

@@ -62,7 +62,7 @@ function exportToSquad() {
         </p>
       </div>
       <div class="row-wrap">
-        <BaseBadge v-if="auction.session" tone="brand">{{ auction.session.teamName }}</BaseBadge>
+        <BaseBadge v-if="auction.session" tone="neutral">{{ auction.session.teamName }}</BaseBadge>
         <BaseButton v-if="auction.squad.length" variant="secondary" @click="exportToSquad">
           Send squad to builder →
         </BaseButton>
@@ -84,7 +84,7 @@ function exportToSquad() {
           :remaining="remaining"
         />
 
-        <BaseCard v-if="auction.isLive" title="Bidding" accent="magenta">
+        <BaseCard v-if="auction.isLive" title="Bidding">
           <div class="bidbar">
             <BaseButton variant="primary" size="lg" :loading="auction.loading" @click="auction.bid('you')">
               Bid for your team
@@ -157,7 +157,7 @@ function exportToSquad() {
       </div>
 
       <div class="stack">
-        <BaseCard title="Your purse" accent="gold">
+        <BaseCard title="Your purse">
           <BudgetMeter
             v-if="auction.summary"
             :budget="auction.summary.budget"
@@ -233,8 +233,8 @@ function exportToSquad() {
 .pool__name { font-weight: 600; }
 .pool__name:hover { color: var(--accent); }
 .pool__meta { font-size: 11.5px; }
-.pool__rating { font-weight: 700; color: var(--brand); text-align: center; }
-.pool__price { font-weight: 700; color: var(--accent); text-align: right; }
+.pool__rating { font-weight: 600; color: var(--text-muted); text-align: center; }
+.pool__price { font-weight: 600; color: var(--text); text-align: right; }
 .pool__empty { padding: 20px 0; font-size: 13px; }
 
 .purse__counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }

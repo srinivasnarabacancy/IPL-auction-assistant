@@ -51,7 +51,7 @@ const applyBudget = () => squad.setBudget(budgetDraft.value)
 
     <div class="split">
       <div class="stack">
-        <BaseCard title="Team budget" accent="gold">
+        <BaseCard title="Team budget">
           <form class="budget" @submit.prevent="applyBudget">
             <BaseInput
               v-model="budgetDraft"
@@ -131,7 +131,7 @@ const applyBudget = () => squad.setBudget(budgetDraft.value)
 .squadlist { padding: 4px 18px 10px; }
 
 .gaps { display: flex; flex-direction: column; gap: 20px; }
-.gap__title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; }
+.gap__title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px; }
 .gap__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .gap__item {
   display: grid; grid-template-columns: minmax(0, 1fr) auto 78px 58px;
@@ -142,7 +142,7 @@ const applyBudget = () => squad.setBudget(budgetDraft.value)
 .gap__name { font-weight: 600; }
 .gap__name:hover { color: var(--accent); }
 .gap__meta { font-size: 11px; }
-.gap__price { font-weight: 700; color: var(--accent); text-align: right; }
+.gap__price { font-weight: 600; color: var(--text); text-align: right; }
 
 @media (max-width: 560px) {
   .gap__item { grid-template-columns: minmax(0, 1fr) 70px 54px; }

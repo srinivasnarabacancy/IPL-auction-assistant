@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useSquadStore } from '@/stores/squad.js'
 import MoneyValue from '../base/MoneyValue.vue'
+import BrandMark from '../base/BrandMark.vue'
 
 defineProps({ open: Boolean })
 defineEmits(['navigate'])
@@ -24,9 +25,9 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
 <template>
   <aside class="sidebar" :class="{ 'sidebar--open': open }">
     <RouterLink to="/" class="brand" @click="$emit('navigate')">
-      <span class="brand__mark">IPL</span>
+      <BrandMark :size="32" />
       <span class="brand__text">
-        <strong>Auction</strong>
+        <strong>IPL Auction</strong>
         <small>Assistant</small>
       </span>
     </RouterLink>
@@ -72,18 +73,16 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
   height: 100vh;
 }
 
-.brand { display: flex; align-items: center; gap: 11px; padding: 0 8px; }
-.brand__mark {
-  font-family: var(--font-display);
-  font-size: 19px; letter-spacing: 1px;
-  background: linear-gradient(135deg, var(--accent), var(--magenta));
-  color: #10060a;
-  padding: 7px 10px 5px;
-  border-radius: 9px;
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 8px; }
+.brand__text { display: flex; flex-direction: column; gap: 2px; line-height: 1.15; }
+.brand__text strong { font-size: 14.5px; font-weight: 600; letter-spacing: -0.005em; }
+.brand__text small {
+  font-size: 9.5px;
+  color: var(--text-dim);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
-.brand__text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand__text strong { font-size: 14px; }
-.brand__text small { font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; }
 
 .nav { display: flex; flex-direction: column; gap: 3px; flex: 1; }
 .nav__link {
@@ -96,10 +95,10 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
 }
 .nav__link:hover { background: var(--surface); color: var(--text); }
 .nav__link--active {
-  background: linear-gradient(90deg, var(--accent-soft), transparent);
-  color: var(--accent);
+  background: var(--surface-hover);
+  color: var(--text);
   font-weight: 600;
-  box-shadow: inset 2px 0 0 var(--accent);
+  box-shadow: inset 2px 0 0 var(--accent-line);
 }
 .nav__icon { width: 16px; text-align: center; font-size: 13px; }
 
@@ -111,9 +110,9 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
   border-radius: var(--radius);
 }
 .purse__label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600; }
-.purse__value { font-size: 20px; color: var(--accent); }
+.purse__value { font-size: 20px; color: var(--text); }
 .purse__bar { height: 5px; background: var(--bg); border-radius: 99px; overflow: hidden; }
-.purse__fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--magenta)); transition: width 0.3s ease; }
+.purse__fill { height: 100%; background: var(--accent); opacity: 0.8; transition: width 0.3s ease; }
 .purse__meta { font-size: 11px; color: var(--text-dim); }
 
 @media (max-width: 980px) {

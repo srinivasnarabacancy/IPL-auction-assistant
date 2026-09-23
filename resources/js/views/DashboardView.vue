@@ -51,7 +51,7 @@ const quickLinks = [
   <div class="page">
     <header class="hero">
       <div>
-        <BaseBadge tone="gold" size="sm">Auction planning</BaseBadge>
+        <BaseBadge tone="neutral" size="sm">Auction planning</BaseBadge>
         <h1 class="hero__title">Build a squad that wins the auction</h1>
         <p class="hero__text">
           Explore the pool, compare options, simulate the bidding and let the assistant check every
@@ -69,13 +69,13 @@ const quickLinks = [
         label="Remaining purse"
         :value="remaining"
         money
-        :tone="remaining < 0 ? 'danger' : 'success'"
+        :tone="remaining < 0 ? 'danger' : 'neutral'"
         :hint="`of ${crore(squad.budget)} total`"
       />
       <StatTile
         label="Squad size"
         :value="summary?.squadSize ?? squad.size"
-        tone="brand"
+        tone="neutral"
         :hint="summary ? `${summary.slotsToMinimum} to minimum of ${summary.limits.minSquadSize}` : 'No players yet'"
       />
       <StatTile
@@ -87,7 +87,7 @@ const quickLinks = [
       <StatTile
         label="Squad checks"
         :value="errorCount ? `${errorCount} blocking` : warningCount ? `${warningCount} to review` : 'All clear'"
-        :tone="errorCount ? 'danger' : warningCount ? 'warning' : 'success'"
+        :tone="errorCount ? 'danger' : 'neutral'"
         :hint="summary ? `${summary.violations.length} total notes` : 'Add players to start'"
       />
     </section>
@@ -129,7 +129,7 @@ const quickLinks = [
       </div>
 
       <div class="stack">
-        <BaseCard title="Budget tracker" accent="gold">
+        <BaseCard title="Budget tracker">
           <BudgetMeter
             :budget="summary?.budget ?? squad.budget"
             :spent="summary?.totalSpent ?? squad.localSpent"
@@ -137,7 +137,7 @@ const quickLinks = [
           />
         </BaseCard>
 
-        <BaseCard title="Role distribution" accent="brand">
+        <BaseCard title="Role distribution">
           <RoleDistribution
             :distribution="summary?.roleDistribution ?? { Batter: 0, Bowler: 0, 'All-rounder': 0, Wicketkeeper: 0 }"
             :total="summary?.squadSize ?? 0"
@@ -175,9 +175,8 @@ const quickLinks = [
 .hero {
   padding: 36px 32px;
   background:
-    linear-gradient(120deg, rgba(240, 165, 0, 0.14), transparent 50%),
-    linear-gradient(240deg, rgba(216, 27, 122, 0.16), transparent 55%),
-    linear-gradient(180deg, var(--surface), var(--bg-elevated));
+    linear-gradient(135deg, rgba(221, 169, 79, 0.06), transparent 55%),
+    var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -201,7 +200,7 @@ const quickLinks = [
 .link__icon {
   width: 34px; height: 34px; flex-shrink: 0; border-radius: 9px;
   display: grid; place-items: center; font-size: 14px;
-  background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(240, 165, 0, 0.25);
+  background: var(--bg-elevated); color: var(--text-muted); border: 1px solid var(--border);
 }
 .link__body { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
 .link__body strong { font-size: 13.5px; }

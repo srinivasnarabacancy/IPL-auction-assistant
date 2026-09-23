@@ -6,11 +6,14 @@ const props = defineProps({
   total: { type: Number, default: 0 },
 })
 
+// The one place categorical colour is justified: four roles that must be
+// told apart at a glance. Muted and equal in weight so none reads as
+// more important than the others.
 const TONES = {
-  Batter: 'var(--brand)',
-  Bowler: 'var(--magenta)',
-  'All-rounder': 'var(--accent)',
-  Wicketkeeper: 'var(--success)',
+  Batter: 'var(--cat-1)',
+  Bowler: 'var(--cat-2)',
+  'All-rounder': 'var(--cat-3)',
+  Wicketkeeper: 'var(--cat-4)',
 }
 
 const rows = computed(() =>

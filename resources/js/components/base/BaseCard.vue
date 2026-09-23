@@ -3,12 +3,11 @@ defineProps({
   title: { type: String, default: '' },
   subtitle: { type: String, default: '' },
   padded: { type: Boolean, default: true },
-  accent: { type: String, default: '' }, // '', 'gold', 'brand', 'magenta'
 })
 </script>
 
 <template>
-  <section class="card" :class="[accent && `card--${accent}`]">
+  <section class="card">
     <header v-if="title || $slots.actions" class="card__head">
       <div class="card__titles">
         <h3 class="card__title">{{ title }}</h3>
@@ -24,24 +23,12 @@ defineProps({
 
 <style scoped>
 .card {
-  background: linear-gradient(180deg, var(--surface), var(--bg-elevated));
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
   position: relative;
 }
-.card--gold::before,
-.card--brand::before,
-.card--magenta::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-}
-.card--gold::before { background: linear-gradient(90deg, var(--accent), transparent); }
-.card--brand::before { background: linear-gradient(90deg, var(--brand), transparent); }
-.card--magenta::before { background: linear-gradient(90deg, var(--magenta), transparent); }
-
 .card__head {
   display: flex;
   align-items: center;
