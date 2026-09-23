@@ -110,7 +110,7 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
   border-radius: var(--radius);
 }
 .purse__label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600; }
-.purse__value { font-size: 20px; color: var(--text); }
+.purse__value { font-size: 20px; color: var(--accent); }
 .purse__bar { height: 5px; background: var(--bg); border-radius: 99px; overflow: hidden; }
 .purse__fill { height: 100%; background: var(--accent); opacity: 0.8; transition: width 0.3s ease; }
 .purse__meta { font-size: 11px; color: var(--text-dim); }

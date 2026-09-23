@@ -3,12 +3,12 @@
    ========================================================================== */
 :root {
   /* Surfaces — a single neutral slate ramp; colour is reserved for meaning. */
-  --bg: #0b0f18;
-  --bg-elevated: #111623;
-  --surface: #141a28;
-  --surface-hover: #1b2231;
-  --border: #222938;
-  --border-strong: #303848;
+  --bg: #070a11;
+  --bg-elevated: #10151f;
+  --surface: #171d2b;
+  --surface-hover: #202737;
+  --border: #272f3f;
+  --border-strong: #3a4456;
 
   --text: #e7ebf2;
   --text-muted: #98a1b2;
@@ -16,9 +16,15 @@
 
   /* One accent. Used for primary actions and the single most important
      number on a screen — not for decoration. */
-  --accent: #dda94f;
-  --accent-soft: rgba(221, 169, 79, 0.12);
-  --accent-line: rgba(221, 169, 79, 0.32);
+  --accent: #e0ab4d;
+  --accent-soft: rgba(224, 171, 77, 0.13);
+  --accent-line: rgba(224, 171, 77, 0.34);
+
+  /* The cool counterpart to the gold. Used for the informational half of a
+     screen so the warm accent stays reserved for what matters most. */
+  --accent-cool: #7aa2cc;
+  --accent-cool-soft: rgba(122, 162, 204, 0.13);
+  --accent-cool-line: rgba(122, 162, 204, 0.32);
 
   /* Semantic only: these appear when something is true, never as styling. */
   --success: #56a389;
@@ -37,8 +43,8 @@
 
   /* Kept as aliases so existing component styles resolve; both now point at
      neutral values rather than electric blue and magenta. */
-  --brand: #7b8aa8;
-  --brand-soft: rgba(123, 138, 168, 0.12);
+  --brand: var(--accent-cool);
+  --brand-soft: var(--accent-cool-soft);
   --magenta: #a2798c;
   --magenta-soft: rgba(162, 121, 140, 0.12);
 
