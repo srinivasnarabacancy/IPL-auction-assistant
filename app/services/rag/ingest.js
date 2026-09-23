@@ -76,10 +76,17 @@ export async function ensureIndex() {
   try {
     await buildIndex()
   } catch (error) {
+    const reason = error.message?.slice(0, 120)
     if (loaded) {
-      console.warn(`[rag] rebuild failed (${error.message?.slice(0, 120)}) - continuing with the existing index`)
+      // The stale index was embedded by a different provider, so its vectors
+      // are a different width. Scoring those against the active provider's
+      // queries returns plausible-looking nonsense instead of an error, so
+      // drop the index entirely rather than answer from mismatched vectors.
+      console.error(`[rag] rebuild failed (${reason}) - discarding the "${vectorStore.provider}" index, retrieval disabled`)
+      vectorStore.reset()
+      vectorStore.provider = null
     } else {
-      console.error(`[rag] could not build an index (${error.message?.slice(0, 120)}) - retrieval disabled`)
+      console.error(`[rag] could not build an index (${reason}) - retrieval disabled`)
     }
   }
 }

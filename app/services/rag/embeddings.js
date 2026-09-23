@@ -5,6 +5,7 @@ import { config } from '../../../config/index.js'
 // swamped by hash collisions from unrelated documents. At ~5k vocabulary terms
 // this leaves the space sparse; the vectors are small and the corpus is tiny.
 const DIMENSIONS = 4096
+const MAX_RETRIES = 4
 const STOPWORDS = new Set(
   'a an the and or of to in on for with is are was were be been at by from as it its his her he she they them this that these those who whom which what how why when where do does did not no you your we our i me my if then than so such can could should would may might will shall have has had'.split(' '),
 )
@@ -106,14 +107,36 @@ export class GeminiEmbeddings {
     return values.map((value) => value / norm)
   }
 
+  /**
+   * Retries on 429. The free tier allows 100 embed requests a minute, which a
+   * deploy can trip if anything else has been hitting the key recently - and a
+   * build that dies on a transient quota error is a build that fails for
+   * reasons unrelated to the code. Google returns the wait in `retryDelay`, so
+   * honour it rather than guessing.
+   */
+  async #embedBatch(batch, taskType, attempt = 0) {
+    try {
+      return await this.client.models.embedContent({
+        model: config.geminiEmbeddingModel,
+        contents: batch,
+        config: { outputDimensionality: this.dimensions, taskType },
+      })
+    } catch (error) {
+      const retriable = error?.status === 429 || error?.status >= 500
+      if (!retriable || attempt >= MAX_RETRIES) throw error
+
+      const suggested = Number(String(error.message ?? '').match(/"retryDelay"\s*:\s*"(\d+)s"/)?.[1])
+      const waitMs = Number.isFinite(suggested) ? (suggested + 1) * 1000 : 2 ** attempt * 2000
+      console.warn(`[rag] embeddings ${error.status} - retrying in ${Math.round(waitMs / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`)
+      await new Promise((resolve) => setTimeout(resolve, waitMs))
+      return this.#embedBatch(batch, taskType, attempt + 1)
+    }
+  }
+
   async #embed(texts, taskType) {
     const out = []
     for (let i = 0; i < texts.length; i += this.batchSize) {
-      const response = await this.client.models.embedContent({
-        model: config.geminiEmbeddingModel,
-        contents: texts.slice(i, i + this.batchSize),
-        config: { outputDimensionality: this.dimensions, taskType },
-      })
+      const response = await this.#embedBatch(texts.slice(i, i + this.batchSize), taskType)
       out.push(...(response.embeddings ?? []).map((embedding) => this.#normalise(embedding.values ?? [])))
     }
     return out
