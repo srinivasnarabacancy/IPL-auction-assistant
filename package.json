@@ -1,0 +1,35 @@
+{
+  "name": "ipl-auction-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI-powered IPL auction planning assistant — Vue 3 client, Node/Express API with RAG",
+  "scripts": {
+    "setup": "npm install && cp -n .env.example .env || true",
+    "dev": "trap 'kill 0' SIGINT SIGTERM EXIT; npm run dev:server & npm run dev:client",
+    "dev:server": "node --watch server.js",
+    "dev:client": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "ingest": "node scripts/ingest.js",
+    "seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "@google/genai": "^2.24.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "pinia": "^2.3.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7"
+  }
+}

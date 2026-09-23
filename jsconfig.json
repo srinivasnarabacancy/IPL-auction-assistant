@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["resources/js/*"] },
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "module": "esnext"
+  },
+  "include": ["resources/js/**/*", "vite.config.js"],
+  "exclude": ["node_modules", "dist"]
+}
