@@ -14,7 +14,7 @@
     "start": "node server.js",
     "ingest": "node scripts/ingest.js",
     "seed": "node scripts/seed.js",
-    "vercel-build": "npm run ingest && vite build"
+    "vercel-build": "node scripts/ingest.js --soft && vite build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",

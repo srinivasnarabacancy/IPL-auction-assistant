@@ -196,4 +196,9 @@ parser still supplies catalogue matches and the answer stays correct, just witho
 base passages. Chat generation is a separate quota and keeps working.
 
 A paid tier removes both ceilings; `EMBEDDING_PROVIDER=local` avoids embedding API calls entirely,
-at some cost to retrieval quality.
+at some cost to retrieval quality — a deploy configured that way never depends on the quota.
+
+`vercel-build` runs the ingest with `--soft`, so a deploy is never blocked by an unavailable
+embedding provider: the build logs the failure, ships without a prebuilt index, and the running app
+falls back to catalogue-only answers. `npm run ingest` on its own stays strict and exits non-zero,
+because locally you want to know.
