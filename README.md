@@ -1,157 +1,119 @@
 # IPL Auction Assistant
 
-An AI-powered assistant for IPL auction planning. Explore the player pool, compare options, build a
-squad against a configurable purse, simulate live bidding, and ask a RAG-backed assistant questions
-that are grounded in both the player catalogue and an auction-rules knowledge base.
+A full-stack application that takes an IPL auction from browsing the player pool to a defensible
+squad: filter → compare → budget → bid → ask. The assistant answers questions grounded in the
+player catalogue, an auction-rules knowledge base, and the squad you have actually built.
 
-**Stack:** Vue 3 (Composition API) + Vite + Pinia · Node.js + Express · MongoDB (optional) ·
-Google Gemini for generation and embeddings (Claude supported as an alternative), with a
-pluggable vector store.
+The player data and knowledge base ship with the repo, so a clone is a working demo — no database
+and no API key required to start.
 
----
+## Tech stack
 
-## Quick start
+| Layer | Choice |
+|---|---|
+| Backend | Node.js ≥ 20, Express 4 |
+| Frontend | Vue 3 (Composition API) + Vite 6, bundled from `resources/` |
+| Styling | Plain CSS with design tokens — no UI framework |
+| State | Pinia, persisted to `localStorage` |
+| Database | MongoDB via Mongoose — **optional**; falls back to the committed JSON seed |
+| Vector store | In-process cosine index persisted to `storage/`, behind a swappable interface |
+| LLM (chat) | Google Gemini (`gemini-3.5-flash-lite`); Claude selectable via `LLM_PROVIDER` |
+| LLM (embeddings) | Google Gemini (`gemini-embedding-001`, truncated to 768 dimensions) |
+| Deployment | Vercel — serverless function for `/api`, static client from `dist/` |
 
-The app runs with **zero configuration** — no database and no API keys required.
+No auth, no queue, no build step for the server: everything derived lives under `storage/` and is
+rebuildable from the committed corpus with one command.
+
+## Prerequisites
+
+- Node.js 20+ with npm
+- A [Google AI Studio](https://aistudio.google.com/apikey) API key (free tier is enough) — optional;
+  without one the assistant runs a deterministic retrieval-only answerer
+- MongoDB — optional; without it player data is read from `database/seeds/players.json`
+
+## Setup
 
 ```bash
-npm run setup          # installs dependencies and creates .env
-npm run dev            # starts the API on :4000 and the client on :5173
+npm install
+cp .env.example .env         # then add GOOGLE_API_KEY
+npm run ingest               # build the retrieval index into storage/
+npm run dev                  # API on :4000, client on :5173
 ```
 
-Open <http://localhost:5173>.
+`npm run setup` does the install and the `.env` copy in one step. The first `npm run dev` builds
+the index automatically if `npm run ingest` was skipped, so the sequence above works as written.
 
-On first boot the backend builds its retrieval index from the knowledge base and the player data,
-and caches it to `storage/vector-index.json`.
+## Configuration
 
-### Running the two sides separately
+Everything lives in `config/index.js`, overridable by environment variable. The knobs you are most
+likely to touch:
 
-```bash
-npm run dev:server     # http://localhost:4000/api
-npm run dev:client     # http://localhost:5173  (proxies /api to :4000)
-```
-
-One package, one `npm install`, one `node_modules` — the server and the client live in the same
-project, Laravel style, with `index.html` and `vite.config.js` at the root.
-
----
-
-## What runs without configuration, and what configuration adds
-
-| Concern | Default (no config) | With configuration |
+| Variable | Default | Effect |
 |---|---|---|
-| **Database** | In-memory, seeded from `database/seeds/players.json` | Set `MONGODB_URI`, then `npm run seed` |
-| **LLM** | Deterministic retrieval-only answerer | Set `GOOGLE_API_KEY` for Gemini answers (or `ANTHROPIC_API_KEY` + `LLM_PROVIDER=anthropic` for Claude) |
-| **Embeddings** | Local hashed TF-IDF (no network) | `EMBEDDING_PROVIDER=gemini` (uses the same `GOOGLE_API_KEY`), or `cohere` |
-| **Vector store** | In-process cosine index, persisted to disk | Swap `MemoryVectorStore` for Qdrant/pgvector |
+| `GOOGLE_API_KEY` | — | Enables Gemini. Unset ⇒ retrieval-only fallback answers |
+| `LLM_PROVIDER` | `gemini` when a Google key is present | `gemini` or `anthropic` |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Answer generation |
+| `EMBEDDING_PROVIDER` | `local` in code, `gemini` in `.env.example` | `local`, `gemini` or `cohere` |
+| `GEMINI_EMBEDDING_MODEL` | `gemini-embedding-001` | Vectors |
+| `GEMINI_EMBEDDING_DIMENSIONS` | `768` | Truncated and re-normalised |
+| `RAG_TOP_K` | `6` | Chunks retrieved per question |
+| `MONGODB_URI` | — | Empty ⇒ in-memory mode from the JSON seed |
+| `PORT` | `4000` | API port; the Vite dev server proxies `/api` to it |
 
-Every one of these sits behind an interface, so turning one on does not touch the rest of the app.
-See `.env.example` for the full list.
+Changing the embedding provider changes the vector width, so the index is keyed by provider name
+and rebuilt automatically when it no longer matches.
 
----
+Auction rules — the ₹120 Cr purse, the 18–25 squad range, the 8-overseas cap and the bid increment
+ladder — live in `AUCTION_RULES` in the same file. The UI, the REST API and the assistant all read
+them from there, so they cannot drift apart.
 
-## Features
+## How it works
 
-**Dashboard** — purse, squad size, overseas usage and rule violations at a glance, plus marquee
-players and value picks.
+**Ingest, offline:** load markdown + player records → chunk → embed → normalise → store.
+One document per player is generated from its row, phrased the way users ask, because retrieval
+quality depends far more on that wording than on the embedding model.
 
-**Player Explorer** — search and filter by role, Indian/Overseas, batting position, bowling type,
-speciality tags and base-price range, with sorting and pagination.
+**Query, per message:** parse hard constraints → retrieve → resolve named players → assemble
+context (rules + catalogue matches + live squad + budget projections) → generate → stream.
 
-**Player Details** — full batting and bowling statistics, profile, similar players, and a live
-"what does buying this player do to my purse" projection.
+Vector search alone cannot enforce "under ₹5 crore", so `app/services/rag/queryParser.js` extracts price, role,
+nationality and speciality constraints deterministically and the exact matches go into the prompt
+alongside the retrieved passages. Every question also carries the user's current squad and purse,
+so "what can we still afford?" needs no extra detail.
 
-**Compare Players** — up to four players side by side, with the best value in each row highlighted.
-
-**Squad Builder** — a configurable purse, editable per-player prices, live squad value and
-composition, rule checks, and suggestions for the gaps in the squad.
-
-**Auction Room** — nominate a player, bid against rival franchises on the real increment ladder,
-drop the hammer, and watch the purse and squad update. Runs its own purse so a bidding rehearsal
-does not disturb the planned squad; results can be copied to the Squad Builder.
-
-**AI Assistant** — a streaming chat that answers with the player catalogue, the auction knowledge
-base and your current squad and purse all in context.
-
-The assistant handles questions such as:
-
-- *"Show Indian middle-order batsmen under ₹5 crore."*
-- *"I need a death bowler. Show suitable options."*
-- *"We have ₹12 crore remaining. What type of players can we target?"*
-- *"Compare Jasprit Bumrah and Rashid Khan."*
-- *"How much budget will remain if I buy Hardik Pandya?"*
-
----
-
-## Architecture
+## Project layout
 
 ```
-server.js                Entry point
-bootstrap/app.js         Express app assembly (middleware, routes, error handling)
-config/                  Environment + auction rule constants (one place to change the rules)
-routes/                  REST endpoints: players, squad, auction, chat
+server.js                Local entry point
+api/index.js             Serverless entry point (Vercel)
+bootstrap/app.js         Express assembly — middleware, routes, error handling
+config/                  Environment + auction rule constants
+routes/                  players · squad · auction · chat
 app/
-  middleware/            Validation (zod) and error handling
+  middleware/            zod validation, error handler
   models/                Mongoose schemas
   repositories/          The only code that touches storage
   services/
-    playerQuery.js         Pure filter / sort / paginate / facets
-    squadService.js        Squad analysis, budget projection, bid increments
-    auctionService.js      Auction sessions (nominate -> bid -> sold)
-    rag/
-      chunker.js           Markdown + player-record chunking
-      embeddings.js        Local, Gemini and Cohere providers, one interface
-      vectorStore.js       Cosine index; the seam for a real vector DB
-      ingest.js            Builds the index from the knowledge base + players
-      queryParser.js       Natural language -> hard catalogue constraints
-      retriever.js         Embed, search, de-duplicate
-      llm.js               Gemini / Claude client (streaming + single-shot)
-      chatService.js       Context assembly and answer generation
+    playerQuery.js       Pure filter / sort / paginate / facets
+    squadService.js      Squad analysis, budget projection, bid increments
+    auctionService.js    Auction sessions (nominate → bid → sold)
+    rag/                 chunker · embeddings · vectorStore · ingest
+                         queryParser · retriever · llm · chatService
 database/
-  connection.js          Mongo connection with an in-memory fallback
+  connection.js          Mongo connection with in-memory fallback
   seeds/players.json     61 mock players
   knowledge-base/*.md    Auction rules, squad rules, roles, budget strategy
-storage/                 Generated artefacts (vector index) - gitignored
-scripts/                 ingest / seed CLI entry points
-resources/
-  css/main.css           Design tokens and global styles
-  js/
-    api/                 Fetch client + SSE reader, one module per resource
-    stores/              Pinia: squad, players, compare, auction, chat
-    composables/         usePlayerFilters, useAsync, useCurrency, useDebouncedRef
-    components/          base/ layout/ player/ squad/ auction/ chat/
-    views/               One per route, lazy-loaded
-    main.js              Client entry
-index.html               Vite entry document
-vite.config.js           Client build + /api dev proxy
-dist/                    Production client build
+storage/                 Generated vector index — gitignored
+resources/js/            Vue client: api · stores · composables · components · views
+resources/css/main.css   Design tokens and global styles
+scripts/                 ingest · seed
 ```
-
-### Design notes
-
-- **One definition of the rules.** Squad limits, budget maths and bid increments live only in
-  `config/` and `app/services/squadService.js`. The UI, the REST API and the AI assistant all read
-  the same numbers, so they cannot disagree.
-- **Retrieval is hybrid.** Vector search alone is unreliable for hard constraints like
-  "under ₹5 crore", so `queryParser.js` extracts those deterministically and the exact matches go
-  into the prompt alongside the retrieved passages.
-- **The assistant always knows your position.** Every question carries the live squad and purse, so
-  "what can we still afford?" needs no extra detail from the user.
-- **Storage is behind a repository.** Filtering runs in memory because the catalogue is small; when
-  it grows, push the predicate into `playerRepository.findAll` and nothing else changes.
-- **The model provider is one file.** `llm.js` exposes `streamAnswer` / `answerOnce` for both
-  Gemini and Claude; `LLM_PROVIDER` picks one and nothing else in the app knows the difference.
-- **The index is keyed by embedding provider.** Providers emit different vector widths, and scoring
-  a 768-d query against a 4096-d index fails silently rather than erroring, so `ensureIndex`
-  rebuilds automatically whenever the active provider differs from the one that built the index.
-
----
 
 ## API
 
 | Method | Path | Purpose |
 |---|---|---|
-| `GET` | `/api/health` | Status, database mode, LLM mode, index size, auction rules |
+| `GET` | `/api/health` | Status, database mode, active model, index size, auction rules |
 | `GET` | `/api/players` | List with search, filters, sorting, pagination |
 | `GET` | `/api/players/facets` | Distinct filter values and price range |
 | `GET` | `/api/players/compare?ids=` | Compare players, with the best value per metric |
@@ -159,80 +121,79 @@ dist/                    Production client build
 | `POST` | `/api/squad/analyse` | Budget, composition and rule violations |
 | `POST` | `/api/squad/project` | Purse impact of buying a given player |
 | `POST` | `/api/squad/suggestions` | Players for the gaps, within the remaining purse |
-| `GET` | `/api/squad/rules` | Auction and squad rule constants |
-| `POST` | `/api/auction/sessions` | Start an auction session |
-| `POST` | `/api/auction/sessions/:id/nominate` | Put a player on the block |
-| `POST` | `/api/auction/sessions/:id/bid` | Place a bid (`you` or `rival`) |
-| `POST` | `/api/auction/sessions/:id/sold` | Drop the hammer |
+| `POST` | `/api/auction/sessions` | Start a session; `/nominate`, `/bid`, `/sold`, `/unsold` follow |
 | `POST` | `/api/chat/ask` | Ask the assistant (single response) |
 | `POST` | `/api/chat/stream` | Ask the assistant (SSE: `token` → `context` → `done`) |
 | `POST` | `/api/chat/reindex` | Rebuild the retrieval index |
 
----
+## Verification
+
+There is no automated test suite; this is a deliberate scope decision. These commands cover the
+pipeline end to end:
+
+```bash
+curl -s localhost:4000/api/health                    # database mode, active model, index size
+npm run ingest                                       # re-embed the corpus, confirm the provider
+curl -s "localhost:4000/api/players?role=Bowler&maxPrice=2"        # filters
+curl -s "localhost:4000/api/players/compare?ids=p041,p052"         # comparison + best-value flags
+curl -sN -X POST localhost:4000/api/chat/stream \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"I need a death bowler.","budget":120,"squad":[]}'  # retrieval + streaming
+```
+
+The assistant is the piece most worth checking by hand. Ask it something answerable
+("Show Indian middle-order batsmen under ₹5 crore"), something that needs your live squad
+("How much budget will remain if I buy Hardik Pandya?"), and something outside the corpus
+("Who won the 2019 Nobel Prize in Physics?") — the last should refuse rather than guess.
 
 ## Data
 
-The 61 players in `database/seeds/players.json` are **mock data**: real player names and roles
-with illustrative career numbers shaped like IPL statistics. They are not accurate records and
-should not be quoted as such.
+The 61 players in `database/seeds/players.json` are **mock data**: real player names and roles with
+illustrative career numbers shaped like IPL statistics. They are not accurate records and should
+not be quoted as such.
 
-To swap in a real feed, replace that file (or point the repository at a real collection) and run
-`npm run ingest` to rebuild the retrieval index.
+To swap in a real feed, replace that file — or point the repository at a real collection — and run
+`npm run ingest` to rebuild the index.
 
----
-
-## Scripts
-
-| Command | Effect |
-|---|---|
-| `npm run setup` | Install dependencies and create `.env` |
-| `npm run dev` | Run the API and the client together |
-| `npm run build` | Production build of the client into `dist/` |
-| `npm run ingest` | Rebuild the vector index from the knowledge base and players |
-| `npm run seed` | Load the seed players into MongoDB (requires `MONGODB_URI`) |
-
----
-
-## Deploying to Vercel
-
-The repo ships a serverless entry (`api/index.js`) and `vercel.json`. The client builds to `dist/`
-and is served statically; everything under `/api` is routed to the function.
+## Deployment
 
 ```bash
-vercel                      # preview deployment
-vercel --prod               # production
+vercel --prod
 ```
 
-Set these in **Project Settings -> Environment Variables** (Production *and* Preview), then redeploy:
+Set `GOOGLE_API_KEY`, `LLM_PROVIDER=gemini` and `EMBEDDING_PROVIDER=gemini` in **Project Settings →
+Environment Variables** for Production *and* Preview, before the first build. `vercel-build` runs
+`npm run ingest`, and the index must be embedded with the same provider the running function uses
+or every cold start will rebuild it.
 
-| Variable | Value |
-|---|---|
-| `GOOGLE_API_KEY` | your Gemini key |
-| `LLM_PROVIDER` | `gemini` |
-| `EMBEDDING_PROVIDER` | `gemini` |
-| `MONGODB_URI` | optional; a connection string enables MongoDB |
+What differs on Vercel: the index is built at deploy time and bundled via `includeFiles`; the
+filesystem is read-only, so `vectorStore.persist()` swallows `EROFS`/`EACCES` and keeps the index in
+memory; and a boot failure degrades rather than crashes — if the index cannot be loaded or rebuilt,
+the API still serves and the assistant falls back to its deterministic answerer.
 
-`GOOGLE_API_KEY` must be available at **build** time as well as runtime: `vercel-build` runs
-`npm run ingest`, and the index has to be embedded with the same provider the running function
-uses, or the function would rebuild it on every cold start.
+## Known limitations
 
-### What runs differently on Vercel
+**Auction sessions are held in memory** (`app/services/auctionService.js`). Serverless invocations
+do not share memory, so on Vercel a session created by one instance may not be visible to the next
+and bidding can fail with *"Auction session not found"*. Locally the same thing happens across a
+server restart. Everything else is unaffected: squads live in the browser and player data is
+read-only. Backing sessions with MongoDB or Redis is the fix; that module is written so only the
+`Map` has to change.
 
-- **The vector index is built at deploy time** (`vercel-build` = `ingest` + `vite build`) and
-  bundled into the function via `includeFiles`. It is not committed to the repo.
-- **The filesystem is read-only.** `vectorStore.persist()` swallows `EROFS`/`EACCES` and keeps the
-  index in memory instead of failing.
-- **Boot failures degrade rather than crash.** If the index cannot be loaded or rebuilt - a rate
-  limit, a revoked key, no network - the API still serves; retrieval returns nothing and the
-  assistant falls back to its deterministic answerer.
+**Squads, comparisons and chat history live in the browser.** They survive a refresh but are not
+shared between devices and are not readable server-side.
 
-### Known limitation: auction sessions
+**Free-tier embeddings have two separate ceilings**, and they behave differently:
 
-Auction sessions live in an in-memory `Map` (`app/services/auctionService.js`). Serverless
-invocations do not share memory, so on Vercel a session created by one instance may not be visible
-to the next: bidding can fail intermittently with *"Auction session not found"*. Everything else -
-player explorer, comparison, squad builder, the assistant - is unaffected, because squads live in
-the browser and player data is read-only.
+| Quota | Limit | Recovery |
+|---|---|---|
+| `EmbedContentRequestsPerMinute...FreeTier` | 100 / minute | Retried automatically using the server-supplied `retryDelay` |
+| `EmbedContentRequestsPerDay...FreeTier` | 1000 / day | Not retried — the API returns `retryDelay: 0s`; it resets at the daily boundary |
 
-Fixing it means backing sessions with MongoDB or Redis; that module is written so only the `Map`
-has to change.
+Hitting the daily ceiling does not break the app. `npm run ingest` fails, so the index cannot be
+rebuilt, and query embedding fails, so retrieval returns nothing — but the deterministic query
+parser still supplies catalogue matches and the answer stays correct, just without the knowledge
+base passages. Chat generation is a separate quota and keeps working.
+
+A paid tier removes both ceilings; `EMBEDDING_PROVIDER=local` avoids embedding API calls entirely,
+at some cost to retrieval quality.

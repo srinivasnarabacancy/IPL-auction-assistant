@@ -122,10 +122,15 @@ export class GeminiEmbeddings {
         config: { outputDimensionality: this.dimensions, taskType },
       })
     } catch (error) {
-      const retriable = error?.status === 429 || error?.status >= 500
+      const raw = String(error.message ?? '')
+      // A per-day ceiling does not clear within a request's lifetime, and the
+      // API signals that with retryDelay 0s. Retrying it just burns minutes
+      // before failing anyway, so surface it immediately.
+      const perDayQuota = /PerDay/i.test(raw) || /"retryDelay"\s*:\s*"0s"/.test(raw)
+      const retriable = (error?.status === 429 && !perDayQuota) || error?.status >= 500
       if (!retriable || attempt >= MAX_RETRIES) throw error
 
-      const suggested = Number(String(error.message ?? '').match(/"retryDelay"\s*:\s*"(\d+)s"/)?.[1])
+      const suggested = Number(raw.match(/"retryDelay"\s*:\s*"(\d+)s"/)?.[1])
       const waitMs = Number.isFinite(suggested) ? (suggested + 1) * 1000 : 2 ** attempt * 2000
       console.warn(`[rag] embeddings ${error.status} - retrying in ${Math.round(waitMs / 1000)}s (attempt ${attempt + 1}/${MAX_RETRIES})`)
       await new Promise((resolve) => setTimeout(resolve, waitMs))
