@@ -62,9 +62,10 @@ const overBudget = computed(() => remaining.value < 0)
   height: var(--topbar-height);
   display: flex; align-items: center; gap: 14px;
   padding: 0 28px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(10, 14, 31, 0.72);
-  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-strong);
+  /* Content scrolls beneath, so this one stays translucent and blurs. */
+  background: var(--chrome-translucent);
+  backdrop-filter: blur(14px);
   position: sticky; top: 0; z-index: 30;
 }
 .topbar__burger {

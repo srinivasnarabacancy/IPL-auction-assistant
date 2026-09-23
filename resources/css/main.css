@@ -5,6 +5,13 @@
   /* Surfaces — a single neutral slate ramp; colour is reserved for meaning. */
   --bg: #070a11;
   --bg-elevated: #10151f;
+
+  /* App chrome — sidebar and topbar. Sits midway between the page canvas and
+     a card, so the shell reads as three distinct planes rather than one wash.
+     Previously these two were hardcoded rgba values that never tracked the
+     palette, which is why they matched the canvas almost exactly. */
+  --chrome: #101622;
+  --chrome-translucent: rgba(16, 22, 34, 0.84);
   --surface: #171d2b;
   --surface-hover: #202737;
   --border: #272f3f;

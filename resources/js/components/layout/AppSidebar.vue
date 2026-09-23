@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useSquadStore } from '@/stores/squad.js'
 import MoneyValue from '../base/MoneyValue.vue'
 import BrandMark from '../base/BrandMark.vue'
+import NavIcon from '../base/NavIcon.vue'
 
 defineProps({ open: Boolean })
 defineEmits(['navigate'])
@@ -10,12 +11,12 @@ defineEmits(['navigate'])
 const squad = useSquadStore()
 
 const links = [
-  { to: '/', label: 'Dashboard', icon: '◆', exact: true },
-  { to: '/players', label: 'Player Explorer', icon: '⌕' },
-  { to: '/compare', label: 'Compare Players', icon: '⇄' },
-  { to: '/squad', label: 'Squad Builder', icon: '▦' },
-  { to: '/auction', label: 'Auction Room', icon: '⚡' },
-  { to: '/assistant', label: 'AI Assistant', icon: '✦' },
+  { to: '/', label: 'Dashboard', icon: 'dashboard', exact: true },
+  { to: '/players', label: 'Player Explorer', icon: 'explore' },
+  { to: '/compare', label: 'Compare Players', icon: 'compare' },
+  { to: '/squad', label: 'Squad Builder', icon: 'squad' },
+  { to: '/auction', label: 'Auction Room', icon: 'auction' },
+  { to: '/assistant', label: 'AI Assistant', icon: 'assistant' },
 ]
 
 const remaining = computed(() => squad.summary?.remainingBudget ?? squad.localRemaining)
@@ -41,7 +42,7 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
         :class="{ 'nav__link--active': $route.path === link.to || (!link.exact && $route.path.startsWith(link.to)) }"
         @click="$emit('navigate')"
       >
-        <span class="nav__icon">{{ link.icon }}</span>
+        <NavIcon :name="link.icon" class="nav__icon" />
         <span>{{ link.label }}</span>
       </RouterLink>
     </nav>
@@ -61,9 +62,8 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
 .sidebar {
   width: var(--sidebar-width);
   flex-shrink: 0;
-  background: rgba(10, 14, 31, 0.86);
-  backdrop-filter: blur(12px);
-  border-right: 1px solid var(--border);
+  background: var(--chrome);
+  border-right: 1px solid var(--border-strong);
   padding: 20px 14px;
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@ const spentPct = computed(() => squad.summary?.spendPercentage ?? 0)
   font-weight: 600;
   box-shadow: inset 2px 0 0 var(--accent-line);
 }
-.nav__icon { width: 16px; text-align: center; font-size: 13px; }
+.nav__icon { opacity: 0.9; }
 
 .purse {
   display: flex; flex-direction: column; gap: 7px;

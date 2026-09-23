@@ -11,6 +11,7 @@ import BaseButton from '@/components/base/BaseButton.vue'
 import BaseBadge from '@/components/base/BaseBadge.vue'
 import PlayerCard from '@/components/player/PlayerCard.vue'
 import CarouselRow from '@/components/base/CarouselRow.vue'
+import NavIcon from '@/components/base/NavIcon.vue'
 import BaseSpinner from '@/components/base/BaseSpinner.vue'
 import BudgetMeter from '@/components/squad/BudgetMeter.vue'
 import RoleDistribution from '@/components/squad/RoleDistribution.vue'
@@ -41,11 +42,11 @@ const errorCount = computed(() => summary.value?.violations.filter((v) => v.seve
 const warningCount = computed(() => summary.value?.violations.filter((v) => v.severity !== 'error').length ?? 0)
 
 const quickLinks = [
-  { to: '/players', title: 'Player Explorer', text: 'Filter the pool by role, origin, position and price.', icon: '⌕' },
-  { to: '/compare', title: 'Compare Players', text: 'Put up to four players side by side.', icon: '⇄' },
-  { to: '/squad', title: 'Squad Builder', text: 'Model your XI and track the purse.', icon: '▦' },
-  { to: '/auction', title: 'Auction Room', text: 'Simulate live bidding against rivals.', icon: '⚡' },
-  { to: '/assistant', title: 'AI Assistant', text: 'Ask questions grounded in your squad.', icon: '✦' },
+  { to: '/players', title: 'Player Explorer', text: 'Filter the pool by role, origin, position and price.', icon: 'explore' },
+  { to: '/compare', title: 'Compare Players', text: 'Put up to four players side by side.', icon: 'compare' },
+  { to: '/squad', title: 'Squad Builder', text: 'Model your XI and track the purse.', icon: 'squad' },
+  { to: '/auction', title: 'Auction Room', text: 'Simulate live bidding against rivals.', icon: 'auction' },
+  { to: '/assistant', title: 'AI Assistant', text: 'Ask questions grounded in your squad.', icon: 'assistant' },
 ]
 </script>
 
@@ -138,7 +139,7 @@ const quickLinks = [
         <BaseCard title="Jump to" :padded="false">
           <div class="links">
             <RouterLink v-for="link in quickLinks" :key="link.to" :to="link.to" class="link">
-              <span class="link__icon">{{ link.icon }}</span>
+              <span class="link__icon"><NavIcon :name="link.icon" :size="17" /></span>
               <span class="link__body">
                 <strong>{{ link.title }}</strong>
                 <small>{{ link.text }}</small>
