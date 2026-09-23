@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+:root {
+  --bg: #0a0e1f;
+  --bg-elevated: #121734;
+  --surface: #161c3d;
+  --surface-hover: #1d2450;
+  --border: #272f5c;
+  --border-strong: #38427a;
+
+  --text: #eef1ff;
+  --text-muted: #a3abd4;
+  --text-dim: #6f78a8;
+
+  --accent: #f0a500;        /* IPL gold */
+  --accent-soft: rgba(240, 165, 0, 0.14);
+  --brand: #3d5afe;         /* electric blue */
+  --brand-soft: rgba(61, 90, 254, 0.16);
+  --magenta: #d81b7a;
+  --magenta-soft: rgba(216, 27, 122, 0.16);
+
+  --success: #2fd18c;
+  --success-soft: rgba(47, 209, 140, 0.14);
+  --warning: #ffb547;
+  --warning-soft: rgba(255, 181, 71, 0.14);
+  --danger: #ff5c72;
+  --danger-soft: rgba(255, 92, 114, 0.14);
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bebas Neue', var(--font);
+
+  --sidebar-width: 244px;
+  --topbar-height: 64px;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #app { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background:
+    radial-gradient(1100px 600px at 12% -10%, rgba(61, 90, 254, 0.16), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, rgba(216, 27, 122, 0.12), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+/* ==========================================================================
+   Utilities used across views
+   ========================================================================== */
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.page-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.page-head h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+}
+.page-head .subtitle { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+
+.grid { display: grid; gap: 16px; }
+.grid-auto { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; align-items: start; }
+
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; align-items: center; gap: 10px; }
+.row-wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.spacer { flex: 1; }
+
+.muted { color: var(--text-muted); }
+.dim { color: var(--text-dim); }
+.num { font-variant-numeric: tabular-nums; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: minmax(0, 1fr); }
+  .page-head h1 { font-size: 32px; }
+}

@@ -1,0 +1,2347 @@
+[
+  {
+    "id": "p001",
+    "slug": "virat-kohli",
+    "name": "Virat Kohli",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 36,
+    "basePrice": 2,
+    "team2025": "RCB",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Anchor",
+      "Powerplay",
+      "Chase master"
+    ],
+    "rating": 92,
+    "stats": {
+      "matches": 252,
+      "batting": {
+        "runs": 8004,
+        "average": 38.6,
+        "strikeRate": 131.9,
+        "fifties": 55,
+        "hundreds": 8,
+        "highestScore": "113"
+      },
+      "bowling": {
+        "wickets": 4,
+        "economy": 8.8,
+        "average": 92,
+        "bestFigures": "2/25"
+      }
+    }
+  },
+  {
+    "id": "p002",
+    "slug": "rohit-sharma",
+    "name": "Rohit Sharma",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 38,
+    "basePrice": 2,
+    "team2025": "MI",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Leadership"
+    ],
+    "rating": 85,
+    "stats": {
+      "matches": 257,
+      "batting": {
+        "runs": 6628,
+        "average": 29.6,
+        "strikeRate": 131,
+        "fifties": 42,
+        "hundreds": 2,
+        "highestScore": "109"
+      },
+      "bowling": {
+        "wickets": 15,
+        "economy": 8,
+        "average": 42.1,
+        "bestFigures": "4/6"
+      }
+    }
+  },
+  {
+    "id": "p003",
+    "slug": "shubman-gill",
+    "name": "Shubman Gill",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 26,
+    "basePrice": 2,
+    "team2025": "GT",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Anchor",
+      "Powerplay"
+    ],
+    "rating": 88,
+    "stats": {
+      "matches": 103,
+      "batting": {
+        "runs": 3210,
+        "average": 39.1,
+        "strikeRate": 137.2,
+        "fifties": 21,
+        "hundreds": 4,
+        "highestScore": "129"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p004",
+    "slug": "ruturaj-gaikwad",
+    "name": "Ruturaj Gaikwad",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 29,
+    "basePrice": 2,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Anchor",
+      "Powerplay",
+      "Leadership"
+    ],
+    "rating": 84,
+    "stats": {
+      "matches": 68,
+      "batting": {
+        "runs": 2502,
+        "average": 40.4,
+        "strikeRate": 135.3,
+        "fifties": 17,
+        "hundreds": 1,
+        "highestScore": "101"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p005",
+    "slug": "yashasvi-jaiswal",
+    "name": "Yashasvi Jaiswal",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 24,
+    "basePrice": 2,
+    "team2025": "RR",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Aggressor"
+    ],
+    "rating": 87,
+    "stats": {
+      "matches": 63,
+      "batting": {
+        "runs": 2170,
+        "average": 34.4,
+        "strikeRate": 152.9,
+        "fifties": 14,
+        "hundreds": 1,
+        "highestScore": "124"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p006",
+    "slug": "shreyas-iyer",
+    "name": "Shreyas Iyer",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 31,
+    "basePrice": 2,
+    "team2025": "PBKS",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Middle-order",
+      "Leadership",
+      "Spin hitter"
+    ],
+    "rating": 83,
+    "stats": {
+      "matches": 123,
+      "batting": {
+        "runs": 3127,
+        "average": 32.2,
+        "strikeRate": 129.4,
+        "fifties": 21,
+        "hundreds": 0,
+        "highestScore": "96"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p007",
+    "slug": "suryakumar-yadav",
+    "name": "Suryakumar Yadav",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 35,
+    "basePrice": 2,
+    "team2025": "MI",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Middle-order",
+      "360 hitter",
+      "Finisher"
+    ],
+    "rating": 89,
+    "stats": {
+      "matches": 153,
+      "batting": {
+        "runs": 3609,
+        "average": 32.5,
+        "strikeRate": 146.1,
+        "fifties": 25,
+        "hundreds": 2,
+        "highestScore": "103"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p008",
+    "slug": "rinku-singh",
+    "name": "Rinku Singh",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 28,
+    "basePrice": 1.5,
+    "team2025": "KKR",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Lower-order",
+    "bowlingType": null,
+    "tags": [
+      "Finisher",
+      "Death hitter"
+    ],
+    "rating": 80,
+    "stats": {
+      "matches": 48,
+      "batting": {
+        "runs": 1002,
+        "average": 38.5,
+        "strikeRate": 150.2,
+        "fifties": 4,
+        "hundreds": 0,
+        "highestScore": "67"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p009",
+    "slug": "tilak-varma",
+    "name": "Tilak Varma",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 23,
+    "basePrice": 1.5,
+    "team2025": "MI",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Middle-order",
+      "Spin hitter"
+    ],
+    "rating": 81,
+    "stats": {
+      "matches": 40,
+      "batting": {
+        "runs": 1180,
+        "average": 39.3,
+        "strikeRate": 143.1,
+        "fifties": 8,
+        "hundreds": 0,
+        "highestScore": "84"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p010",
+    "slug": "ajinkya-rahane",
+    "name": "Ajinkya Rahane",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 37,
+    "basePrice": 1,
+    "team2025": "KKR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Anchor",
+      "Experience"
+    ],
+    "rating": 70,
+    "stats": {
+      "matches": 195,
+      "batting": {
+        "runs": 4642,
+        "average": 30.5,
+        "strikeRate": 126,
+        "fifties": 30,
+        "hundreds": 2,
+        "highestScore": "105"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p011",
+    "slug": "devdutt-padikkal",
+    "name": "Devdutt Padikkal",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 25,
+    "basePrice": 1,
+    "team2025": "LSG",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Anchor"
+    ],
+    "rating": 72,
+    "stats": {
+      "matches": 66,
+      "batting": {
+        "runs": 1717,
+        "average": 29.6,
+        "strikeRate": 125.4,
+        "fifties": 11,
+        "hundreds": 1,
+        "highestScore": "101"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p012",
+    "slug": "sarfaraz-khan",
+    "name": "Sarfaraz Khan",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 28,
+    "basePrice": 0.75,
+    "team2025": "DC",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Middle-order",
+      "Spin hitter"
+    ],
+    "rating": 66,
+    "stats": {
+      "matches": 52,
+      "batting": {
+        "runs": 656,
+        "average": 25.2,
+        "strikeRate": 130.4,
+        "fifties": 1,
+        "hundreds": 0,
+        "highestScore": "60"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p013",
+    "slug": "angkrish-raghuvanshi",
+    "name": "Angkrish Raghuvanshi",
+    "role": "Batter",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 24,
+    "basePrice": 0.3,
+    "team2025": "KKR",
+    "capped": false,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Uncapped",
+      "Middle-order"
+    ],
+    "rating": 62,
+    "stats": {
+      "matches": 10,
+      "batting": {
+        "runs": 163,
+        "average": 20.4,
+        "strikeRate": 150.9,
+        "fifties": 1,
+        "hundreds": 0,
+        "highestScore": "54"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p014",
+    "slug": "abhishek-sharma",
+    "name": "Abhishek Sharma",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 25,
+    "basePrice": 2,
+    "team2025": "SRH",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm orthodox",
+    "battingOrder": "Top-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Powerplay",
+      "Aggressor",
+      "Part-time spin"
+    ],
+    "rating": 85,
+    "stats": {
+      "matches": 63,
+      "batting": {
+        "runs": 1372,
+        "average": 24.5,
+        "strikeRate": 161,
+        "fifties": 6,
+        "hundreds": 1,
+        "highestScore": "141"
+      },
+      "bowling": {
+        "wickets": 12,
+        "economy": 8.4,
+        "average": 44.8,
+        "bestFigures": "2/25"
+      }
+    }
+  },
+  {
+    "id": "p015",
+    "slug": "jos-buttler",
+    "name": "Jos Buttler",
+    "role": "Wicketkeeper",
+    "nationality": "Overseas",
+    "country": "England",
+    "age": 35,
+    "basePrice": 2,
+    "team2025": "GT",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Keeper",
+      "Aggressor"
+    ],
+    "rating": 90,
+    "stats": {
+      "matches": 107,
+      "batting": {
+        "runs": 3582,
+        "average": 38.5,
+        "strikeRate": 148,
+        "fifties": 20,
+        "hundreds": 7,
+        "highestScore": "124"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p016",
+    "slug": "heinrich-klaasen",
+    "name": "Heinrich Klaasen",
+    "role": "Wicketkeeper",
+    "nationality": "Overseas",
+    "country": "South Africa",
+    "age": 34,
+    "basePrice": 2,
+    "team2025": "SRH",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Finisher",
+      "Keeper",
+      "Spin destroyer"
+    ],
+    "rating": 89,
+    "stats": {
+      "matches": 48,
+      "batting": {
+        "runs": 1300,
+        "average": 38.2,
+        "strikeRate": 176.4,
+        "fifties": 8,
+        "hundreds": 0,
+        "highestScore": "104"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p017",
+    "slug": "rishabh-pant",
+    "name": "Rishabh Pant",
+    "role": "Wicketkeeper",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 28,
+    "basePrice": 2,
+    "team2025": "LSG",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Finisher",
+      "Keeper",
+      "Leadership"
+    ],
+    "rating": 88,
+    "stats": {
+      "matches": 111,
+      "batting": {
+        "runs": 3284,
+        "average": 34.6,
+        "strikeRate": 148.2,
+        "fifties": 18,
+        "hundreds": 1,
+        "highestScore": "128"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p018",
+    "slug": "kl-rahul",
+    "name": "KL Rahul",
+    "role": "Wicketkeeper",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 33,
+    "basePrice": 2,
+    "team2025": "DC",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Anchor",
+      "Keeper",
+      "Powerplay"
+    ],
+    "rating": 87,
+    "stats": {
+      "matches": 132,
+      "batting": {
+        "runs": 5222,
+        "average": 45.4,
+        "strikeRate": 134.6,
+        "fifties": 39,
+        "hundreds": 4,
+        "highestScore": "132"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p019",
+    "slug": "sanju-samson",
+    "name": "Sanju Samson",
+    "role": "Wicketkeeper",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 31,
+    "basePrice": 2,
+    "team2025": "RR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Keeper",
+      "Leadership",
+      "Aggressor"
+    ],
+    "rating": 84,
+    "stats": {
+      "matches": 166,
+      "batting": {
+        "runs": 4270,
+        "average": 30.3,
+        "strikeRate": 139,
+        "fifties": 24,
+        "hundreds": 3,
+        "highestScore": "119"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p020",
+    "slug": "ishan-kishan",
+    "name": "Ishan Kishan",
+    "role": "Wicketkeeper",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 27,
+    "basePrice": 1.5,
+    "team2025": "SRH",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Keeper"
+    ],
+    "rating": 78,
+    "stats": {
+      "matches": 105,
+      "batting": {
+        "runs": 2644,
+        "average": 28.4,
+        "strikeRate": 135.7,
+        "fifties": 15,
+        "hundreds": 1,
+        "highestScore": "99"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p021",
+    "slug": "phil-salt",
+    "name": "Phil Salt",
+    "role": "Wicketkeeper",
+    "nationality": "Overseas",
+    "country": "England",
+    "age": 29,
+    "basePrice": 2,
+    "team2025": "RCB",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Keeper",
+      "Aggressor"
+    ],
+    "rating": 84,
+    "stats": {
+      "matches": 42,
+      "batting": {
+        "runs": 1197,
+        "average": 30.7,
+        "strikeRate": 168.8,
+        "fifties": 7,
+        "hundreds": 1,
+        "highestScore": "89"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p022",
+    "slug": "quinton-de-kock",
+    "name": "Quinton de Kock",
+    "role": "Wicketkeeper",
+    "nationality": "Overseas",
+    "country": "South Africa",
+    "age": 33,
+    "basePrice": 2,
+    "team2025": "KKR",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Top-order",
+    "bowlingType": null,
+    "tags": [
+      "Powerplay",
+      "Keeper"
+    ],
+    "rating": 79,
+    "stats": {
+      "matches": 119,
+      "batting": {
+        "runs": 3500,
+        "average": 31.5,
+        "strikeRate": 133.9,
+        "fifties": 24,
+        "hundreds": 2,
+        "highestScore": "140"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p023",
+    "slug": "jitesh-sharma",
+    "name": "Jitesh Sharma",
+    "role": "Wicketkeeper",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 32,
+    "basePrice": 1,
+    "team2025": "RCB",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Lower-order",
+    "bowlingType": null,
+    "tags": [
+      "Finisher",
+      "Keeper"
+    ],
+    "rating": 73,
+    "stats": {
+      "matches": 45,
+      "batting": {
+        "runs": 730,
+        "average": 24.3,
+        "strikeRate": 152.1,
+        "fifties": 2,
+        "hundreds": 0,
+        "highestScore": "49"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p024",
+    "slug": "dhruv-jurel",
+    "name": "Dhruv Jurel",
+    "role": "Wicketkeeper",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 25,
+    "basePrice": 0.5,
+    "team2025": "RR",
+    "capped": false,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": null,
+    "battingOrder": "Middle-order",
+    "bowlingType": null,
+    "tags": [
+      "Keeper",
+      "Finisher",
+      "Uncapped"
+    ],
+    "rating": 72,
+    "stats": {
+      "matches": 32,
+      "batting": {
+        "runs": 504,
+        "average": 28,
+        "strikeRate": 155.6,
+        "fifties": 1,
+        "hundreds": 0,
+        "highestScore": "52"
+      },
+      "bowling": {
+        "wickets": 0,
+        "economy": 0,
+        "average": 0,
+        "bestFigures": "-"
+      }
+    }
+  },
+  {
+    "id": "p025",
+    "slug": "hardik-pandya",
+    "name": "Hardik Pandya",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 32,
+    "basePrice": 2,
+    "team2025": "MI",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast-medium",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Finisher",
+      "Death bowling",
+      "Leadership"
+    ],
+    "rating": 88,
+    "stats": {
+      "matches": 143,
+      "batting": {
+        "runs": 2626,
+        "average": 29.5,
+        "strikeRate": 145.3,
+        "fifties": 8,
+        "hundreds": 0,
+        "highestScore": "91"
+      },
+      "bowling": {
+        "wickets": 74,
+        "economy": 9,
+        "average": 31.5,
+        "bestFigures": "4/16"
+      }
+    }
+  },
+  {
+    "id": "p026",
+    "slug": "ravindra-jadeja",
+    "name": "Ravindra Jadeja",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 37,
+    "basePrice": 2,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm orthodox",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Finisher",
+      "Middle-overs spin",
+      "Fielding"
+    ],
+    "rating": 90,
+    "stats": {
+      "matches": 254,
+      "batting": {
+        "runs": 3100,
+        "average": 27.2,
+        "strikeRate": 137.5,
+        "fifties": 3,
+        "hundreds": 0,
+        "highestScore": "62"
+      },
+      "bowling": {
+        "wickets": 160,
+        "economy": 7.6,
+        "average": 29.8,
+        "bestFigures": "5/16"
+      }
+    }
+  },
+  {
+    "id": "p027",
+    "slug": "axar-patel",
+    "name": "Axar Patel",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 32,
+    "basePrice": 2,
+    "team2025": "DC",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm orthodox",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Powerplay spin",
+      "Finisher",
+      "Leadership"
+    ],
+    "rating": 84,
+    "stats": {
+      "matches": 155,
+      "batting": {
+        "runs": 1673,
+        "average": 22,
+        "strikeRate": 133,
+        "fifties": 2,
+        "hundreds": 0,
+        "highestScore": "66"
+      },
+      "bowling": {
+        "wickets": 129,
+        "economy": 7.4,
+        "average": 28.9,
+        "bestFigures": "3/17"
+      }
+    }
+  },
+  {
+    "id": "p028",
+    "slug": "nitish-kumar-reddy",
+    "name": "Nitish Kumar Reddy",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 23,
+    "basePrice": 1.5,
+    "team2025": "SRH",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "battingOrder": "Middle-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Finisher",
+      "Sixth bowler",
+      "Uncapped upside"
+    ],
+    "rating": 79,
+    "stats": {
+      "matches": 27,
+      "batting": {
+        "runs": 600,
+        "average": 28.6,
+        "strikeRate": 151,
+        "fifties": 3,
+        "hundreds": 0,
+        "highestScore": "76"
+      },
+      "bowling": {
+        "wickets": 8,
+        "economy": 9.6,
+        "average": 58,
+        "bestFigures": "2/24"
+      }
+    }
+  },
+  {
+    "id": "p029",
+    "slug": "shivam-dube",
+    "name": "Shivam Dube",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 32,
+    "basePrice": 1.5,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "battingOrder": "Middle-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Spin destroyer",
+      "Finisher"
+    ],
+    "rating": 80,
+    "stats": {
+      "matches": 85,
+      "batting": {
+        "runs": 1600,
+        "average": 29.1,
+        "strikeRate": 148.6,
+        "fifties": 7,
+        "hundreds": 0,
+        "highestScore": "95"
+      },
+      "bowling": {
+        "wickets": 12,
+        "economy": 9.9,
+        "average": 66,
+        "bestFigures": "2/28"
+      }
+    }
+  },
+  {
+    "id": "p030",
+    "slug": "venkatesh-iyer",
+    "name": "Venkatesh Iyer",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 31,
+    "basePrice": 1,
+    "team2025": "KKR",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "battingOrder": "Top-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "Sixth bowler"
+    ],
+    "rating": 74,
+    "stats": {
+      "matches": 59,
+      "batting": {
+        "runs": 1500,
+        "average": 29.4,
+        "strikeRate": 134.9,
+        "fifties": 9,
+        "hundreds": 1,
+        "highestScore": "104"
+      },
+      "bowling": {
+        "wickets": 4,
+        "economy": 9.2,
+        "average": 84,
+        "bestFigures": "1/11"
+      }
+    }
+  },
+  {
+    "id": "p031",
+    "slug": "washington-sundar",
+    "name": "Washington Sundar",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 26,
+    "basePrice": 1,
+    "team2025": "GT",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Off-break",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Powerplay spin",
+      "Economy"
+    ],
+    "rating": 75,
+    "stats": {
+      "matches": 63,
+      "batting": {
+        "runs": 290,
+        "average": 17.1,
+        "strikeRate": 120.8,
+        "fifties": 1,
+        "hundreds": 0,
+        "highestScore": "40*"
+      },
+      "bowling": {
+        "wickets": 36,
+        "economy": 7.2,
+        "average": 33.4,
+        "bestFigures": "3/16"
+      }
+    }
+  },
+  {
+    "id": "p032",
+    "slug": "krunal-pandya",
+    "name": "Krunal Pandya",
+    "role": "All-rounder",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 35,
+    "basePrice": 1,
+    "team2025": "RCB",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm orthodox",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs spin",
+      "Economy",
+      "Leadership"
+    ],
+    "rating": 76,
+    "stats": {
+      "matches": 124,
+      "batting": {
+        "runs": 1560,
+        "average": 22.6,
+        "strikeRate": 133.1,
+        "fifties": 2,
+        "hundreds": 0,
+        "highestScore": "86"
+      },
+      "bowling": {
+        "wickets": 80,
+        "economy": 7.5,
+        "average": 33,
+        "bestFigures": "4/28"
+      }
+    }
+  },
+  {
+    "id": "p033",
+    "slug": "andre-russell",
+    "name": "Andre Russell",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "West Indies",
+    "age": 37,
+    "basePrice": 2,
+    "team2025": "KKR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Finisher",
+      "Death bowling",
+      "Power hitter"
+    ],
+    "rating": 85,
+    "stats": {
+      "matches": 140,
+      "batting": {
+        "runs": 2500,
+        "average": 29.4,
+        "strikeRate": 174.2,
+        "fifties": 2,
+        "hundreds": 0,
+        "highestScore": "88"
+      },
+      "bowling": {
+        "wickets": 120,
+        "economy": 9.3,
+        "average": 25.8,
+        "bestFigures": "5/15"
+      }
+    }
+  },
+  {
+    "id": "p034",
+    "slug": "mitchell-marsh",
+    "name": "Mitchell Marsh",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "Australia",
+    "age": 34,
+    "basePrice": 2,
+    "team2025": "LSG",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium-fast",
+    "battingOrder": "Top-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "Sixth bowler"
+    ],
+    "rating": 80,
+    "stats": {
+      "matches": 55,
+      "batting": {
+        "runs": 1200,
+        "average": 29.3,
+        "strikeRate": 142.5,
+        "fifties": 7,
+        "hundreds": 0,
+        "highestScore": "89"
+      },
+      "bowling": {
+        "wickets": 35,
+        "economy": 8.9,
+        "average": 29.4,
+        "bestFigures": "4/26"
+      }
+    }
+  },
+  {
+    "id": "p035",
+    "slug": "glenn-maxwell",
+    "name": "Glenn Maxwell",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "Australia",
+    "age": 37,
+    "basePrice": 2,
+    "team2025": "PBKS",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Off-break",
+    "battingOrder": "Middle-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Spin hitter",
+      "Middle-overs spin",
+      "Finisher"
+    ],
+    "rating": 82,
+    "stats": {
+      "matches": 140,
+      "batting": {
+        "runs": 2800,
+        "average": 25.4,
+        "strikeRate": 154.7,
+        "fifties": 17,
+        "hundreds": 2,
+        "highestScore": "95"
+      },
+      "bowling": {
+        "wickets": 37,
+        "economy": 8,
+        "average": 40.5,
+        "bestFigures": "3/17"
+      }
+    }
+  },
+  {
+    "id": "p036",
+    "slug": "marcus-stoinis",
+    "name": "Marcus Stoinis",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "Australia",
+    "age": 36,
+    "basePrice": 1.5,
+    "team2025": "PBKS",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium-fast",
+    "battingOrder": "Middle-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Finisher",
+      "Sixth bowler"
+    ],
+    "rating": 81,
+    "stats": {
+      "matches": 105,
+      "batting": {
+        "runs": 1900,
+        "average": 27.5,
+        "strikeRate": 146.9,
+        "fifties": 9,
+        "hundreds": 1,
+        "highestScore": "124"
+      },
+      "bowling": {
+        "wickets": 42,
+        "economy": 9.4,
+        "average": 34.2,
+        "bestFigures": "4/15"
+      }
+    }
+  },
+  {
+    "id": "p037",
+    "slug": "sam-curran",
+    "name": "Sam Curran",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "England",
+    "age": 27,
+    "basePrice": 1.5,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm medium-fast",
+    "battingOrder": "Lower-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Powerplay",
+      "Finisher"
+    ],
+    "rating": 78,
+    "stats": {
+      "matches": 60,
+      "batting": {
+        "runs": 900,
+        "average": 21.4,
+        "strikeRate": 136.3,
+        "fifties": 2,
+        "hundreds": 0,
+        "highestScore": "88"
+      },
+      "bowling": {
+        "wickets": 55,
+        "economy": 9.1,
+        "average": 28.3,
+        "bestFigures": "4/11"
+      }
+    }
+  },
+  {
+    "id": "p038",
+    "slug": "liam-livingstone",
+    "name": "Liam Livingstone",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "England",
+    "age": 32,
+    "basePrice": 1.5,
+    "team2025": "RCB",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Leg-break",
+    "battingOrder": "Middle-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Power hitter",
+      "Part-time spin"
+    ],
+    "rating": 77,
+    "stats": {
+      "matches": 63,
+      "batting": {
+        "runs": 1200,
+        "average": 26.7,
+        "strikeRate": 155,
+        "fifties": 5,
+        "hundreds": 0,
+        "highestScore": "94"
+      },
+      "bowling": {
+        "wickets": 20,
+        "economy": 8.7,
+        "average": 45,
+        "bestFigures": "2/17"
+      }
+    }
+  },
+  {
+    "id": "p039",
+    "slug": "rachin-ravindra",
+    "name": "Rachin Ravindra",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "New Zealand",
+    "age": 26,
+    "basePrice": 1,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm orthodox",
+    "battingOrder": "Top-order",
+    "bowlingType": "Spin",
+    "tags": [
+      "Powerplay",
+      "Part-time spin"
+    ],
+    "rating": 73,
+    "stats": {
+      "matches": 18,
+      "batting": {
+        "runs": 320,
+        "average": 22.9,
+        "strikeRate": 150.2,
+        "fifties": 2,
+        "hundreds": 0,
+        "highestScore": "65"
+      },
+      "bowling": {
+        "wickets": 3,
+        "economy": 8.9,
+        "average": 72,
+        "bestFigures": "1/13"
+      }
+    }
+  },
+  {
+    "id": "p040",
+    "slug": "cameron-green",
+    "name": "Cameron Green",
+    "role": "All-rounder",
+    "nationality": "Overseas",
+    "country": "Australia",
+    "age": 26,
+    "basePrice": 1.5,
+    "team2025": "RCB",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast-medium",
+    "battingOrder": "Middle-order",
+    "bowlingType": "Pace",
+    "tags": [
+      "Sixth bowler",
+      "Middle-order"
+    ],
+    "rating": 79,
+    "stats": {
+      "matches": 32,
+      "batting": {
+        "runs": 700,
+        "average": 35,
+        "strikeRate": 155.5,
+        "fifties": 4,
+        "hundreds": 0,
+        "highestScore": "100"
+      },
+      "bowling": {
+        "wickets": 16,
+        "economy": 9.5,
+        "average": 41.6,
+        "bestFigures": "2/29"
+      }
+    }
+  },
+  {
+    "id": "p041",
+    "slug": "jasprit-bumrah",
+    "name": "Jasprit Bumrah",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 32,
+    "basePrice": 2,
+    "team2025": "MI",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Powerplay",
+      "Wicket-taker"
+    ],
+    "rating": 96,
+    "stats": {
+      "matches": 140,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 180,
+        "economy": 6.6,
+        "average": 20.4,
+        "bestFigures": "5/10"
+      }
+    }
+  },
+  {
+    "id": "p042",
+    "slug": "mohammed-siraj",
+    "name": "Mohammed Siraj",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 31,
+    "basePrice": 2,
+    "team2025": "GT",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast-medium",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "Wicket-taker"
+    ],
+    "rating": 82,
+    "stats": {
+      "matches": 105,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 110,
+        "economy": 8.5,
+        "average": 27.1,
+        "bestFigures": "4/21"
+      }
+    }
+  },
+  {
+    "id": "p043",
+    "slug": "arshdeep-singh",
+    "name": "Arshdeep Singh",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 27,
+    "basePrice": 2,
+    "team2025": "PBKS",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm fast-medium",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Powerplay",
+      "Left-arm angle"
+    ],
+    "rating": 85,
+    "stats": {
+      "matches": 80,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 99,
+        "economy": 8.7,
+        "average": 24.9,
+        "bestFigures": "5/32"
+      }
+    }
+  },
+  {
+    "id": "p044",
+    "slug": "mohammed-shami",
+    "name": "Mohammed Shami",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 35,
+    "basePrice": 2,
+    "team2025": "SRH",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "New ball"
+    ],
+    "rating": 81,
+    "stats": {
+      "matches": 120,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 145,
+        "economy": 8.1,
+        "average": 26,
+        "bestFigures": "4/11"
+      }
+    }
+  },
+  {
+    "id": "p045",
+    "slug": "yuzvendra-chahal",
+    "name": "Yuzvendra Chahal",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 35,
+    "basePrice": 2,
+    "team2025": "PBKS",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Leg-break",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs",
+      "Wicket-taker"
+    ],
+    "rating": 86,
+    "stats": {
+      "matches": 160,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 205,
+        "economy": 7.8,
+        "average": 22.4,
+        "bestFigures": "5/40"
+      }
+    }
+  },
+  {
+    "id": "p046",
+    "slug": "kuldeep-yadav",
+    "name": "Kuldeep Yadav",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 31,
+    "basePrice": 2,
+    "team2025": "DC",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm wrist-spin",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs",
+      "Wicket-taker"
+    ],
+    "rating": 83,
+    "stats": {
+      "matches": 85,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 96,
+        "economy": 8.1,
+        "average": 23.9,
+        "bestFigures": "4/14"
+      }
+    }
+  },
+  {
+    "id": "p047",
+    "slug": "ravi-bishnoi",
+    "name": "Ravi Bishnoi",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 25,
+    "basePrice": 1.5,
+    "team2025": "LSG",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Leg-break",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs",
+      "Economy"
+    ],
+    "rating": 78,
+    "stats": {
+      "matches": 65,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 70,
+        "economy": 8,
+        "average": 27.5,
+        "bestFigures": "4/24"
+      }
+    }
+  },
+  {
+    "id": "p048",
+    "slug": "harshal-patel",
+    "name": "Harshal Patel",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 35,
+    "basePrice": 1.5,
+    "team2025": "SRH",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Slower balls"
+    ],
+    "rating": 80,
+    "stats": {
+      "matches": 110,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 140,
+        "economy": 8.9,
+        "average": 22.7,
+        "bestFigures": "5/27"
+      }
+    }
+  },
+  {
+    "id": "p049",
+    "slug": "avesh-khan",
+    "name": "Avesh Khan",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 29,
+    "basePrice": 1,
+    "team2025": "LSG",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast-medium",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Middle-overs",
+      "Death bowling"
+    ],
+    "rating": 74,
+    "stats": {
+      "matches": 70,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 80,
+        "economy": 8.9,
+        "average": 26.3,
+        "bestFigures": "4/24"
+      }
+    }
+  },
+  {
+    "id": "p050",
+    "slug": "mukesh-kumar",
+    "name": "Mukesh Kumar",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 32,
+    "basePrice": 0.75,
+    "team2025": "DC",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast-medium",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Hard lengths"
+    ],
+    "rating": 69,
+    "stats": {
+      "matches": 30,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 30,
+        "economy": 9.6,
+        "average": 32,
+        "bestFigures": "3/25"
+      }
+    }
+  },
+  {
+    "id": "p051",
+    "slug": "mayank-yadav",
+    "name": "Mayank Yadav",
+    "role": "Bowler",
+    "nationality": "Indian",
+    "country": "India",
+    "age": 23,
+    "basePrice": 0.5,
+    "team2025": "LSG",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Express pace",
+      "Uncapped upside"
+    ],
+    "rating": 74,
+    "stats": {
+      "matches": 7,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 9,
+        "economy": 6.9,
+        "average": 15.6,
+        "bestFigures": "3/14"
+      }
+    }
+  },
+  {
+    "id": "p052",
+    "slug": "rashid-khan",
+    "name": "Rashid Khan",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "Afghanistan",
+    "age": 27,
+    "basePrice": 2,
+    "team2025": "GT",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Leg-break",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs",
+      "Economy",
+      "Wicket-taker"
+    ],
+    "rating": 93,
+    "stats": {
+      "matches": 130,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 160,
+        "economy": 6.8,
+        "average": 21.2,
+        "bestFigures": "4/24"
+      }
+    }
+  },
+  {
+    "id": "p053",
+    "slug": "trent-boult",
+    "name": "Trent Boult",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "New Zealand",
+    "age": 36,
+    "basePrice": 2,
+    "team2025": "MI",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Left-arm fast-medium",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "New ball",
+      "Swing"
+    ],
+    "rating": 85,
+    "stats": {
+      "matches": 120,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 140,
+        "economy": 8.3,
+        "average": 26.4,
+        "bestFigures": "4/18"
+      }
+    }
+  },
+  {
+    "id": "p054",
+    "slug": "kagiso-rabada",
+    "name": "Kagiso Rabada",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "South Africa",
+    "age": 30,
+    "basePrice": 2,
+    "team2025": "GT",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "Death bowling"
+    ],
+    "rating": 87,
+    "stats": {
+      "matches": 80,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 120,
+        "economy": 8.4,
+        "average": 19.9,
+        "bestFigures": "4/21"
+      }
+    }
+  },
+  {
+    "id": "p055",
+    "slug": "jofra-archer",
+    "name": "Jofra Archer",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "England",
+    "age": 31,
+    "basePrice": 2,
+    "team2025": "RR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Express pace"
+    ],
+    "rating": 80,
+    "stats": {
+      "matches": 50,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 55,
+        "economy": 8.4,
+        "average": 26.1,
+        "bestFigures": "3/15"
+      }
+    }
+  },
+  {
+    "id": "p056",
+    "slug": "mitchell-starc",
+    "name": "Mitchell Starc",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "Australia",
+    "age": 36,
+    "basePrice": 2,
+    "team2025": "DC",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Powerplay",
+      "Death bowling",
+      "Yorkers"
+    ],
+    "rating": 82,
+    "stats": {
+      "matches": 40,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 50,
+        "economy": 8.8,
+        "average": 26.8,
+        "bestFigures": "4/33"
+      }
+    }
+  },
+  {
+    "id": "p057",
+    "slug": "noor-ahmad",
+    "name": "Noor Ahmad",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "Afghanistan",
+    "age": 21,
+    "basePrice": 1,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Left-arm wrist-spin",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs",
+      "Wicket-taker"
+    ],
+    "rating": 81,
+    "stats": {
+      "matches": 30,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 40,
+        "economy": 7.9,
+        "average": 20.5,
+        "bestFigures": "4/18"
+      }
+    }
+  },
+  {
+    "id": "p058",
+    "slug": "maheesh-theekshana",
+    "name": "Maheesh Theekshana",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "Sri Lanka",
+    "age": 25,
+    "basePrice": 1,
+    "team2025": "RR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Off-break",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Powerplay spin",
+      "Economy",
+      "Mystery spin"
+    ],
+    "rating": 75,
+    "stats": {
+      "matches": 32,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 30,
+        "economy": 7.7,
+        "average": 31.4,
+        "bestFigures": "4/33"
+      }
+    }
+  },
+  {
+    "id": "p059",
+    "slug": "anrich-nortje",
+    "name": "Anrich Nortje",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "South Africa",
+    "age": 32,
+    "basePrice": 1,
+    "team2025": "KKR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Express pace",
+      "Middle-overs"
+    ],
+    "rating": 76,
+    "stats": {
+      "matches": 55,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 65,
+        "economy": 8.6,
+        "average": 23.8,
+        "bestFigures": "4/10"
+      }
+    }
+  },
+  {
+    "id": "p060",
+    "slug": "matheesha-pathirana",
+    "name": "Matheesha Pathirana",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "Sri Lanka",
+    "age": 23,
+    "basePrice": 1.5,
+    "team2025": "CSK",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "battingOrder": "N/A",
+    "bowlingType": "Pace",
+    "tags": [
+      "Death bowling",
+      "Slinger",
+      "Yorkers"
+    ],
+    "rating": 84,
+    "stats": {
+      "matches": 25,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 35,
+        "economy": 8.2,
+        "average": 18.9,
+        "bestFigures": "4/28"
+      }
+    }
+  },
+  {
+    "id": "p061",
+    "slug": "adam-zampa",
+    "name": "Adam Zampa",
+    "role": "Bowler",
+    "nationality": "Overseas",
+    "country": "Australia",
+    "age": 34,
+    "basePrice": 0.75,
+    "team2025": "RR",
+    "capped": true,
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Leg-break",
+    "battingOrder": "N/A",
+    "bowlingType": "Spin",
+    "tags": [
+      "Middle-overs",
+      "Wicket-taker"
+    ],
+    "rating": 71,
+    "stats": {
+      "matches": 20,
+      "batting": {
+        "runs": 0,
+        "average": 0,
+        "strikeRate": 0,
+        "fifties": 0,
+        "hundreds": 0,
+        "highestScore": "-"
+      },
+      "bowling": {
+        "wickets": 22,
+        "economy": 8.3,
+        "average": 27.1,
+        "bestFigures": "3/22"
+      }
+    }
+  }
+]
