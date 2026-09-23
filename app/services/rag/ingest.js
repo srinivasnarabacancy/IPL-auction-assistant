@@ -44,7 +44,10 @@ export async function buildIndex({ persist = true, log = console.log } = {}) {
   )
 
   log(`[rag] indexed ${ruleChunks.length} rule chunks + ${playerChunks.length} player docs using ${embedder.name}`)
-  if (persist) log(`[rag] index written to ${vectorStore.persist()}`)
+  if (persist) {
+    const file = vectorStore.persist()
+    log(file ? `[rag] index written to ${file}` : '[rag] index held in memory (not persisted)')
+  }
   return { ruleChunks: ruleChunks.length, playerChunks: playerChunks.length, provider: embedder.name }
 }
 
@@ -65,5 +68,18 @@ export async function ensureIndex() {
   if (loaded) {
     console.log(`[rag] index was built with "${vectorStore.provider}" but "${currentProvider}" is active - rebuilding`)
   }
-  await buildIndex()
+
+  // A rebuild can fail for reasons outside our control - an embedding provider
+  // rate limit, a revoked key, no network. None of those should stop the API
+  // from booting: a stale index still answers well, and with no index at all
+  // retrieval simply returns nothing while the rest of the app keeps working.
+  try {
+    await buildIndex()
+  } catch (error) {
+    if (loaded) {
+      console.warn(`[rag] rebuild failed (${error.message?.slice(0, 120)}) - continuing with the existing index`)
+    } else {
+      console.error(`[rag] could not build an index (${error.message?.slice(0, 120)}) - retrieval disabled`)
+    }
+  }
 }

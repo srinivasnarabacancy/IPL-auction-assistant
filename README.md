@@ -190,3 +190,49 @@ To swap in a real feed, replace that file (or point the repository at a real col
 | `npm run build` | Production build of the client into `dist/` |
 | `npm run ingest` | Rebuild the vector index from the knowledge base and players |
 | `npm run seed` | Load the seed players into MongoDB (requires `MONGODB_URI`) |
+
+---
+
+## Deploying to Vercel
+
+The repo ships a serverless entry (`api/index.js`) and `vercel.json`. The client builds to `dist/`
+and is served statically; everything under `/api` is routed to the function.
+
+```bash
+vercel                      # preview deployment
+vercel --prod               # production
+```
+
+Set these in **Project Settings -> Environment Variables** (Production *and* Preview), then redeploy:
+
+| Variable | Value |
+|---|---|
+| `GOOGLE_API_KEY` | your Gemini key |
+| `LLM_PROVIDER` | `gemini` |
+| `EMBEDDING_PROVIDER` | `gemini` |
+| `MONGODB_URI` | optional; a connection string enables MongoDB |
+
+`GOOGLE_API_KEY` must be available at **build** time as well as runtime: `vercel-build` runs
+`npm run ingest`, and the index has to be embedded with the same provider the running function
+uses, or the function would rebuild it on every cold start.
+
+### What runs differently on Vercel
+
+- **The vector index is built at deploy time** (`vercel-build` = `ingest` + `vite build`) and
+  bundled into the function via `includeFiles`. It is not committed to the repo.
+- **The filesystem is read-only.** `vectorStore.persist()` swallows `EROFS`/`EACCES` and keeps the
+  index in memory instead of failing.
+- **Boot failures degrade rather than crash.** If the index cannot be loaded or rebuilt - a rate
+  limit, a revoked key, no network - the API still serves; retrieval returns nothing and the
+  assistant falls back to its deterministic answerer.
+
+### Known limitation: auction sessions
+
+Auction sessions live in an in-memory `Map` (`app/services/auctionService.js`). Serverless
+invocations do not share memory, so on Vercel a session created by one instance may not be visible
+to the next: bidding can fail intermittently with *"Auction session not found"*. Everything else -
+player explorer, comparison, squad builder, the assistant - is unaffected, because squads live in
+the browser and player data is read-only.
+
+Fixing it means backing sessions with MongoDB or Redis; that module is written so only the `Map`
+has to change.

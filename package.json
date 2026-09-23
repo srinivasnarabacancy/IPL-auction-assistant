@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "AI-powered IPL auction planning assistant — Vue 3 client, Node/Express API with RAG",
+  "description": "AI-powered IPL auction planning assistant \u2014 Vue 3 client, Node/Express API with RAG",
   "scripts": {
     "setup": "npm install && cp -n .env.example .env || true",
     "dev": "trap 'kill 0' SIGINT SIGTERM EXIT; npm run dev:server & npm run dev:client",
@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "start": "node server.js",
     "ingest": "node scripts/ingest.js",
-    "seed": "node scripts/seed.js"
+    "seed": "node scripts/seed.js",
+    "vercel-build": "npm run ingest && vite build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.68.0",

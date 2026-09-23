@@ -46,7 +46,25 @@ export class MemoryVectorStore {
     return this.documents.length
   }
 
+  /**
+   * Serverless filesystems are read-only outside /tmp, so a failed write must
+   * not take the process down: the index is already usable in memory, it just
+   * cannot be cached to disk. On Vercel the index is built at deploy time
+   * instead, so this path is only reached if something forces a rebuild.
+   */
   persist() {
+    try {
+      return this.#write()
+    } catch (error) {
+      if (['EROFS', 'EACCES', 'EPERM'].includes(error.code)) {
+        console.warn(`[rag] read-only filesystem - index kept in memory only (${error.code})`)
+        return null
+      }
+      throw error
+    }
+  }
+
+  #write() {
     fs.mkdirSync(path.dirname(INDEX_FILE), { recursive: true })
     fs.writeFileSync(
       INDEX_FILE,
