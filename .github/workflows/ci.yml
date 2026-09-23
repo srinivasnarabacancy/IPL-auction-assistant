@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-smoke:
+    runs-on: ubuntu-latest
+
+    env:
+      # No secrets required. The local embedder needs no API key and no quota,
+      # so CI exercises the whole pipeline without touching Gemini; the
+      # assistant falls back to its deterministic answerer for the same reason.
+      EMBEDDING_PROVIDER: local
+      PORT: 4000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build client
+        run: npm run build
+
+      - name: Build retrieval index
+        run: npm run ingest
+
+      - name: Start API
+        run: |
+          node server.js > /tmp/api.log 2>&1 &
+          echo $! > /tmp/api.pid
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:4000/api/health >/dev/null && break
+            sleep 1
+          done
+          curl -sf http://localhost:4000/api/health >/dev/null || { cat /tmp/api.log; exit 1; }
+
+      - name: Smoke test the API
+        run: |
+          set -euo pipefail
+          B=http://localhost:4000/api
+
+          echo "health"
+          curl -sf "$B/health" | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            if (d.status !== "ok") throw new Error("health not ok");
+            if (d.vectorIndex.documents < 80) throw new Error("index too small: " + d.vectorIndex.documents);
+            console.log("  ok —", d.vectorIndex.documents, "docs via", d.vectorIndex.provider);
+          '
+
+          echo "filters resolve the spec example"
+          curl -sf "$B/players?role=Batter&nationality=Indian&battingOrder=Middle-order&maxPrice=5" | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            if (d.pagination.total < 1) throw new Error("no middle-order batters under 5cr");
+            console.log("  ok —", d.pagination.total, "matches");
+          '
+
+          echo "squad analysis enforces the rules"
+          curl -sf -X POST "$B/squad/analyse" -H 'Content-Type: application/json' \
+            -d '{"budget":120,"squad":[{"playerId":"p041","price":18}]}' | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            if (d.summary.remainingBudget !== 102) throw new Error("bad purse: " + d.summary.remainingBudget);
+            console.log("  ok — purse", d.summary.remainingBudget);
+          '
+
+          echo "auction follows the bid increment ladder"
+          SID=$(curl -sf -X POST "$B/auction/sessions" -H 'Content-Type: application/json' -d '{"budget":120}' | node -pe 'JSON.parse(require("fs").readFileSync(0,"utf8")).id')
+          curl -sf -X POST "$B/auction/sessions/$SID/nominate" -H 'Content-Type: application/json' -d '{"playerId":"p041"}' >/dev/null
+          curl -sf -X POST "$B/auction/sessions/$SID/bid" -H 'Content-Type: application/json' -d '{"bidder":"you"}' >/dev/null
+          curl -sf -X POST "$B/auction/sessions/$SID/bid" -H 'Content-Type: application/json' -d '{"bidder":"you"}' | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            if (d.lot.currentBid !== 2.2) throw new Error("expected 2.2 after one increment, got " + d.lot.currentBid);
+            console.log("  ok — bid", d.lot.currentBid);
+          '
+
+          echo "retrieval finds the right knowledge-base section"
+          curl -sf -X POST "$B/chat/ask" -H 'Content-Type: application/json' \
+            -d '{"question":"What are the overseas player rules?","budget":120,"squad":[]}' | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            if (!d.sources.some(s => /Overseas/i.test(s.title))) throw new Error("overseas rule not retrieved");
+            console.log("  ok —", d.sources.length, "sources");
+          '
+
+      - name: Stop API
+        if: always()
+        run: kill "$(cat /tmp/api.pid)" 2>/dev/null || true

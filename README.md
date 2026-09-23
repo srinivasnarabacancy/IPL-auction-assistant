@@ -128,7 +128,13 @@ scripts/                 ingest · seed
 
 ## Verification
 
-There is no automated test suite; this is a deliberate scope decision. These commands cover the
+CI runs on every push and pull request to `main` (`.github/workflows/ci.yml`): install, client
+build, index build, then a smoke suite against a running API — health and index size, the
+"Indian middle-order batsmen under ₹5 crore" filter, squad purse arithmetic, the auction bid
+increment ladder, and whether retrieval surfaces the overseas-limit rule. It sets
+`EMBEDDING_PROVIDER=local` and needs **no secrets**, so it never touches the Gemini quota.
+
+Beyond that there is no unit test suite; this is a deliberate scope decision. These commands cover the
 pipeline end to end:
 
 ```bash
