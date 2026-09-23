@@ -57,12 +57,12 @@ watch(
     <header class="hero">
       <div class="hero__main">
         <div class="hero__badges">
-          <BaseBadge tone="gold">{{ player.role }}</BaseBadge>
+          <BaseBadge tone="neutral">{{ player.role }}</BaseBadge>
           <BaseBadge :tone="player.nationality === 'Overseas' ? 'warning' : 'neutral'">
             {{ player.nationality }}
           </BaseBadge>
           <BaseBadge v-if="!player.capped" tone="neutral">Uncapped</BaseBadge>
-          <BaseBadge v-if="player.team2025" tone="brand">{{ player.team2025 }}</BaseBadge>
+          <BaseBadge v-if="player.team2025" tone="neutral">{{ player.team2025 }}</BaseBadge>
         </div>
 
         <h1 class="hero__name">{{ player.name }}</h1>
@@ -73,7 +73,7 @@ watch(
         </p>
 
         <div v-if="player.tags?.length" class="hero__tags">
-          <BaseBadge v-for="tag in player.tags" :key="tag" tone="gold" size="sm">{{ tag }}</BaseBadge>
+          <BaseBadge v-for="tag in player.tags" :key="tag" tone="neutral" size="sm">{{ tag }}</BaseBadge>
         </div>
       </div>
 
@@ -108,7 +108,7 @@ watch(
       </div>
 
       <div class="stack">
-        <BaseCard title="Auction impact" accent="gold">
+        <BaseCard title="Auction impact">
           <div v-if="projection.data.value" class="impact">
             <div class="impact__row">
               <span class="muted">Purse now</span>
@@ -168,8 +168,8 @@ watch(
   display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: flex-start;
   padding: 26px;
   background:
-    linear-gradient(120deg, rgba(240, 165, 0, 0.1), transparent 55%),
-    linear-gradient(180deg, var(--surface), var(--bg-elevated));
+    linear-gradient(135deg, rgba(221, 169, 79, 0.05), transparent 55%),
+    var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
@@ -187,8 +187,8 @@ watch(
 .hero__ratinglabel, .hero__pricelabel {
   font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600;
 }
-.hero__rating strong { font-size: 30px; font-weight: 800; color: var(--brand); }
-.hero__price strong { font-size: 24px; font-weight: 800; color: var(--accent); }
+.hero__rating strong { font-size: 30px; font-weight: 700; color: var(--text); }
+.hero__price strong { font-size: 24px; font-weight: 700; color: var(--text); }
 
 .profile { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 0; }
 .profile dt { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 600; }
@@ -197,7 +197,7 @@ watch(
 .impact { display: flex; flex-direction: column; gap: 10px; }
 .impact__row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 13px; }
 .impact__row strong { font-size: 15px; font-weight: 700; }
-.impact__row--key strong { font-size: 20px; color: var(--accent); }
+.impact__row--key strong { font-size: 20px; color: var(--text); }
 .impact__row strong.bad { color: var(--danger); }
 .impact__blockers { margin: 4px 0 0; padding-left: 18px; font-size: 12.5px; color: var(--danger); }
 .impact__ok { font-size: 12.5px; color: var(--success); }

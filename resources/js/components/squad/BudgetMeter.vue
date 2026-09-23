@@ -49,17 +49,17 @@ const tone = computed(() => {
   display: block; font-size: 10.5px; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600; margin-bottom: 3px;
 }
-.meter__value { font-size: 27px; font-weight: 800; color: var(--success); letter-spacing: -0.02em; }
+.meter__value { font-size: 27px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
 .meter__spent { font-size: 16px; font-weight: 700; color: var(--text-muted); }
 
 .meter__track { height: 9px; background: var(--bg); border-radius: 99px; overflow: hidden; border: 1px solid var(--border); }
-.meter__fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--success), #6ee7b7); transition: width 0.35s ease; }
+.meter__fill { height: 100%; border-radius: 99px; background: var(--text-dim); transition: width 0.35s ease; }
 
 .meter__foot { display: flex; justify-content: space-between; gap: 10px; font-size: 11.5px; }
 .meter__over { color: var(--danger); font-weight: 700; }
 
 .meter--warning .meter__value { color: var(--warning); }
-.meter--warning .meter__fill { background: linear-gradient(90deg, var(--warning), var(--accent)); }
+.meter--warning .meter__fill { background: var(--warning); }
 .meter--danger .meter__value { color: var(--danger); }
-.meter--danger .meter__fill { background: linear-gradient(90deg, var(--danger), var(--magenta)); }
+.meter--danger .meter__fill { background: var(--danger); }
 </style>

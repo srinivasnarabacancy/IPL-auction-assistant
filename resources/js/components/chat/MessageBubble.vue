@@ -118,7 +118,7 @@ const showCaret = computed(() => props.message.streaming && !props.message.conte
   background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-muted);
 }
 .chip:hover { border-color: var(--accent); color: var(--accent); }
-.chip__price { color: var(--accent); font-size: 11px; }
+.chip__price { color: var(--text-muted); font-size: 11px; }
 
 .bubble__sources { margin-top: 12px; font-size: 12px; }
 .bubble__sources summary { cursor: pointer; color: var(--text-dim); font-weight: 600; }

@@ -9,7 +9,9 @@ defineProps({
 })
 defineEmits(['remove', 'update-price'])
 
-const roleTone = { Batter: 'brand', Bowler: 'magenta', 'All-rounder': 'gold', Wicketkeeper: 'success' }
+// Roles are categories, not states - they read as neutral chips. Only
+// Overseas is tinted, because it is a constraint that binds the squad.
+const roleTone = { Batter: 'neutral', Bowler: 'neutral', 'All-rounder': 'neutral', Wicketkeeper: 'neutral' }
 </script>
 
 <template>
@@ -82,7 +84,7 @@ const roleTone = { Batter: 'brand', Bowler: 'magenta', 'All-rounder': 'gold', Wi
   border-radius: 7px; padding: 6px 9px; font-size: 13px; font-weight: 600; outline: none;
 }
 .slist__input:focus { border-color: var(--brand); }
-.slist__paid { font-size: 13.5px; font-weight: 700; color: var(--accent); text-align: right; display: block; }
+.slist__paid { font-size: 13.5px; font-weight: 600; color: var(--text); text-align: right; display: block; }
 
 .slist__remove {
   background: transparent; border: none; cursor: pointer;

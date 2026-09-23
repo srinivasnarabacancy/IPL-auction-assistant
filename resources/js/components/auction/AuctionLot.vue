@@ -25,7 +25,7 @@ const canAfford = computed(() => nextBid.value !== null && nextBid.value <= prop
   <div class="lot" :class="{ 'lot--live': lot, 'lot--leading': youLead }">
     <template v-if="player">
       <div class="lot__head">
-        <BaseBadge tone="magenta" size="sm">On the block</BaseBadge>
+        <BaseBadge tone="accent" size="sm">On the block</BaseBadge>
         <BaseBadge :tone="player.nationality === 'Overseas' ? 'warning' : 'neutral'" size="sm">
           {{ player.nationality }}
         </BaseBadge>
@@ -53,7 +53,7 @@ const canAfford = computed(() => nextBid.value !== null && nextBid.value <= prop
       </div>
 
       <div v-if="player.tags?.length" class="lot__tags">
-        <BaseBadge v-for="tag in player.tags" :key="tag" tone="gold" size="sm">{{ tag }}</BaseBadge>
+        <BaseBadge v-for="tag in player.tags" :key="tag" tone="neutral" size="sm">{{ tag }}</BaseBadge>
       </div>
     </template>
 
@@ -69,13 +69,13 @@ const canAfford = computed(() => nextBid.value !== null && nextBid.value <= prop
 .lot {
   display: flex; flex-direction: column; gap: 10px;
   padding: 24px;
-  background: linear-gradient(180deg, var(--surface), var(--bg-elevated));
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.lot--live { border-color: rgba(216, 27, 122, 0.4); box-shadow: 0 0 0 1px rgba(216, 27, 122, 0.12), var(--shadow); }
-.lot--leading { border-color: rgba(47, 209, 140, 0.45); box-shadow: 0 0 0 1px rgba(47, 209, 140, 0.14), var(--shadow); }
+.lot--live { border-color: var(--border-strong); box-shadow: var(--shadow); }
+.lot--leading { border-color: rgba(86, 163, 137, 0.4); box-shadow: var(--shadow); }
 
 .lot__head { display: flex; flex-wrap: wrap; gap: 6px; }
 .lot__name { font-family: var(--font-display); font-size: 40px; letter-spacing: 1px; line-height: 1.05; }
@@ -87,7 +87,7 @@ const canAfford = computed(() => nextBid.value !== null && nextBid.value <= prop
   margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--border);
 }
 .lot__bidlabel { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600; width: 100%; }
-.lot__bidvalue { font-size: 38px; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+.lot__bidvalue { font-size: 38px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
 .lot__leader { font-size: 12.5px; color: var(--text-muted); }
 .lot__leader--you { color: var(--success); font-weight: 700; }
 

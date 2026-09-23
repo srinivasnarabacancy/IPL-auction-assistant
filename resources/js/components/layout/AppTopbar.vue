@@ -28,13 +28,14 @@ const overBudget = computed(() => remaining.value < 0)
   <header class="topbar">
     <button class="topbar__burger" type="button" aria-label="Toggle navigation" @click="$emit('toggle-nav')">☰</button>
 
-    <div class="topbar__status">
-      <BaseBadge :tone="health ? 'success' : 'danger'" size="sm">
-        {{ health ? 'API online' : 'API offline' }}
-      </BaseBadge>
-      <BaseBadge v-if="health" :tone="health.llm === 'fallback' ? 'warning' : 'brand'" size="sm">
-        {{ health.llm === 'fallback' ? 'RAG only' : health.llm }}
-      </BaseBadge>
+    <!--
+      Nothing is shown while the API is healthy. A permanently green "online"
+      badge and a model name are build details, not something an auction
+      planner acts on; the only state worth interrupting for is the API being
+      unreachable, because then every number on screen is stale.
+    -->
+    <div v-if="health === null" class="topbar__status">
+      <BaseBadge tone="danger" size="sm">API offline</BaseBadge>
     </div>
 
     <div class="spacer" />

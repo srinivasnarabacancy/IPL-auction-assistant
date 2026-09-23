@@ -13,7 +13,9 @@ const props = defineProps({
 defineEmits(['toggle-squad', 'toggle-compare'])
 
 
-const roleTone = { Batter: 'brand', Bowler: 'magenta', 'All-rounder': 'gold', Wicketkeeper: 'success' }
+// Roles are categories, not states - they read as neutral chips. Only
+// Overseas is tinted, because it is a constraint that binds the squad.
+const roleTone = { Batter: 'neutral', Bowler: 'neutral', 'All-rounder': 'neutral', Wicketkeeper: 'neutral' }
 
 /** The two numbers that matter most for this player's role. */
 const headline = computed(() => {
@@ -97,14 +99,14 @@ const headline = computed(() => {
 <style scoped>
 .pcard {
   display: flex; flex-direction: column;
-  background: linear-gradient(180deg, var(--surface), var(--bg-elevated));
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .pcard:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-.pcard--owned { border-color: rgba(47, 209, 140, 0.4); }
+.pcard--owned { border-color: rgba(86, 163, 137, 0.35); }
 
 .pcard__link { display: block; padding: 16px 16px 12px; }
 
@@ -114,10 +116,10 @@ const headline = computed(() => {
 .pcard__meta { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; }
 .pcard__rating {
   flex-shrink: 0;
-  font-size: 15px; font-weight: 800;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid rgba(240, 165, 0, 0.3);
+  font-size: 15px; font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   border-radius: 9px;
   padding: 5px 9px;
 }
@@ -132,7 +134,7 @@ const headline = computed(() => {
 .pcard__stat { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .pcard__stat dt { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); font-weight: 600; }
 .pcard__stat dd { margin: 0; font-size: 13.5px; font-weight: 700; }
-.pcard__stat--price dd { color: var(--accent); }
+.pcard__stat--price dd { color: var(--text); }
 
 .pcard__actions { display: flex; gap: 1px; border-top: 1px solid var(--border); margin-top: auto; }
 .act {

@@ -24,7 +24,7 @@ const overseasTone = computed(() => {
 
 <template>
   <div v-if="summary" class="summary">
-    <BaseCard title="Budget tracker" accent="gold">
+    <BaseCard title="Budget tracker">
       <BudgetMeter
         :budget="summary.budget"
         :spent="summary.totalSpent"
@@ -37,7 +37,7 @@ const overseasTone = computed(() => {
       </div>
     </BaseCard>
 
-    <BaseCard title="Squad composition" accent="brand">
+    <BaseCard title="Squad composition">
       <div class="summary__counts">
         <div class="summary__count">
           <span class="summary__countlabel">Squad</span>
@@ -72,7 +72,7 @@ const overseasTone = computed(() => {
       <RoleDistribution :distribution="summary.roleDistribution" :total="summary.squadSize" />
     </BaseCard>
 
-    <BaseCard v-if="showViolations" title="Squad checks" accent="magenta">
+    <BaseCard v-if="showViolations" title="Squad checks">
       <ul v-if="summary.violations.length" class="issues">
         <li v-for="issue in summary.violations" :key="issue.code" class="issues__item">
           <BaseBadge :tone="toneFor[issue.severity]" size="sm">{{ issue.severity }}</BaseBadge>
@@ -91,7 +91,7 @@ const overseasTone = computed(() => {
   display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
   margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12.5px;
 }
-.summary__slotcost strong { font-size: 15px; color: var(--accent); }
+.summary__slotcost strong { font-size: 15px; color: var(--text); }
 
 .summary__counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .summary__count { display: flex; flex-direction: column; gap: 2px; }

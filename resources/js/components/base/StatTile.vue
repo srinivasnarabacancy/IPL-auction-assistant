@@ -30,7 +30,7 @@ defineProps({
   padding: 16px 18px;
   background: linear-gradient(180deg, var(--surface), var(--bg-elevated));
   border: 1px solid var(--border);
-  border-left: 3px solid var(--border-strong);
+  border-left: 2px solid var(--border-strong);
   border-radius: var(--radius);
 }
 .tile__label {
@@ -40,12 +40,12 @@ defineProps({
 .tile__value { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
 .tile__hint { font-size: 12px; color: var(--text-muted); }
 
-.tile--gold { border-left-color: var(--accent); }
-.tile--gold .tile__value { color: var(--accent); }
-.tile--brand { border-left-color: var(--brand); }
-.tile--brand .tile__value { color: #8fa2ff; }
+/* A row of tiles should read as one group, so the value stays neutral and only
+   the left rail differentiates. Colour appears when the tile reports a state
+   the user has to act on - over budget, a limit reached - not as decoration. */
+.tile--gold { border-left-color: var(--accent-line); }
+.tile--brand { border-left-color: var(--border-strong); }
 .tile--success { border-left-color: var(--success); }
-.tile--success .tile__value { color: var(--success); }
 .tile--warning { border-left-color: var(--warning); }
 .tile--warning .tile__value { color: var(--warning); }
 .tile--danger { border-left-color: var(--danger); }

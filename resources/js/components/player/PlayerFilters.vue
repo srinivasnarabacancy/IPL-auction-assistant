@@ -125,7 +125,7 @@ const QUICK_TAGS = [
     </div>
 
     <div v-if="filters.tags.length" class="filters__active">
-      <BaseBadge v-for="tag in filters.tags" :key="tag" tone="gold" size="sm">
+      <BaseBadge v-for="tag in filters.tags" :key="tag" tone="neutral" size="sm">
         {{ tag }}
         <button class="chipx" type="button" @click="emit('toggle-tag', tag)">✕</button>
       </BaseBadge>
@@ -137,7 +137,7 @@ const QUICK_TAGS = [
 .filters {
   display: flex; flex-direction: column; gap: 16px;
   padding: 18px;
-  background: linear-gradient(180deg, var(--surface), var(--bg-elevated));
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
@@ -146,7 +146,7 @@ const QUICK_TAGS = [
 .filters__icon { color: var(--text-dim); font-size: 14px; }
 
 .filters__summary { display: flex; align-items: flex-end; gap: 8px; padding-bottom: 8px; }
-.filters__count { font-size: 20px; font-weight: 800; color: var(--accent); }
+.filters__count { font-size: 20px; font-weight: 700; color: var(--text); }
 .filters__countlabel { font-size: 12px; color: var(--text-muted); margin-right: auto; }
 
 .filters__tags { display: flex; flex-direction: column; gap: 8px; }
@@ -158,7 +158,7 @@ const QUICK_TAGS = [
   transition: all 0.15s ease;
 }
 .tagbtn:hover { border-color: var(--border-strong); color: var(--text); }
-.tagbtn--on { background: var(--accent-soft); border-color: rgba(240, 165, 0, 0.4); color: var(--accent); }
+.tagbtn--on { background: var(--surface-hover); border-color: var(--accent-line); color: var(--text); }
 
 .filters__active { display: flex; flex-wrap: wrap; gap: 6px; }
 .chipx { background: none; border: none; color: inherit; cursor: pointer; padding: 0 0 0 2px; font-size: 9px; }

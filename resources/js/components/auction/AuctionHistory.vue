@@ -46,6 +46,6 @@ const time = (iso) =>
 }
 .hist__row:last-child { border-bottom: none; }
 .hist__name { font-weight: 600; }
-.hist__price { font-weight: 700; color: var(--accent); }
+.hist__price { font-weight: 600; color: var(--text); }
 .hist__to { font-size: 11px; text-align: right; }
 </style>

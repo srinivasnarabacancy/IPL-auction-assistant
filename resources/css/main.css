@@ -2,35 +2,50 @@
    Design tokens
    ========================================================================== */
 :root {
-  --bg: #0a0e1f;
-  --bg-elevated: #121734;
-  --surface: #161c3d;
-  --surface-hover: #1d2450;
-  --border: #272f5c;
-  --border-strong: #38427a;
+  /* Surfaces — a single neutral slate ramp; colour is reserved for meaning. */
+  --bg: #0b0f18;
+  --bg-elevated: #111623;
+  --surface: #141a28;
+  --surface-hover: #1b2231;
+  --border: #222938;
+  --border-strong: #303848;
 
-  --text: #eef1ff;
-  --text-muted: #a3abd4;
-  --text-dim: #6f78a8;
+  --text: #e7ebf2;
+  --text-muted: #98a1b2;
+  --text-dim: #828b9c;   /* 4.5:1 on --surface — AA for the small labels it is used on */
 
-  --accent: #f0a500;        /* IPL gold */
-  --accent-soft: rgba(240, 165, 0, 0.14);
-  --brand: #3d5afe;         /* electric blue */
-  --brand-soft: rgba(61, 90, 254, 0.16);
-  --magenta: #d81b7a;
-  --magenta-soft: rgba(216, 27, 122, 0.16);
+  /* One accent. Used for primary actions and the single most important
+     number on a screen — not for decoration. */
+  --accent: #dda94f;
+  --accent-soft: rgba(221, 169, 79, 0.12);
+  --accent-line: rgba(221, 169, 79, 0.32);
 
-  --success: #2fd18c;
-  --success-soft: rgba(47, 209, 140, 0.14);
-  --warning: #ffb547;
-  --warning-soft: rgba(255, 181, 71, 0.14);
-  --danger: #ff5c72;
-  --danger-soft: rgba(255, 92, 114, 0.14);
+  /* Semantic only: these appear when something is true, never as styling. */
+  --success: #56a389;
+  --success-soft: rgba(86, 163, 137, 0.12);
+  --warning: #c9963f;
+  --warning-soft: rgba(201, 150, 63, 0.12);
+  --danger: #c76b7a;
+  --danger-soft: rgba(199, 107, 122, 0.12);
+
+  /* Categorical hues, for the role-distribution chart alone. Equal weight so
+     no role reads as more important than another. */
+  --cat-1: #6f8bbd;
+  --cat-2: #b8798c;
+  --cat-3: #c2a05c;
+  --cat-4: #679a86;
+
+  /* Kept as aliases so existing component styles resolve; both now point at
+     neutral values rather than electric blue and magenta. */
+  --brand: #7b8aa8;
+  --brand-soft: rgba(123, 138, 168, 0.12);
+  --magenta: #a2798c;
+  --magenta-soft: rgba(162, 121, 140, 0.12);
 
   --radius-sm: 8px;
-  --radius: 14px;
-  --radius-lg: 20px;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 
   --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Bebas Neue', var(--font);
@@ -52,8 +67,7 @@ body {
   margin: 0;
   font-family: var(--font);
   background:
-    radial-gradient(1100px 600px at 12% -10%, rgba(61, 90, 254, 0.16), transparent 60%),
-    radial-gradient(900px 520px at 100% 0%, rgba(216, 27, 122, 0.12), transparent 55%),
+    radial-gradient(1200px 700px at 20% -15%, rgba(255, 255, 255, 0.035), transparent 65%),
     var(--bg);
   background-attachment: fixed;
   color: var(--text);

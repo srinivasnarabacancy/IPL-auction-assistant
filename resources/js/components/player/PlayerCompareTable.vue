@@ -147,7 +147,7 @@ const isBest = (player, row) => props.bests[row.key] === player.id && props.play
 .cmp__grouprow td {
   padding: 14px 16px 6px;
   font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--accent); font-weight: 700;
+  color: var(--text-muted); font-weight: 700;
 }
 .cmp__metric {
   padding: 10px 16px; text-align: left; font-weight: 500;
